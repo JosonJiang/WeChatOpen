@@ -1,0 +1,26 @@
+<view class="custom-class van-nav-bar van-hairline--bottom {{ fixed ? 'van-nav-bar--fixed' : '' }}" style="z-index:{{zIndex}}">
+
+    <view class="van-nav-bar__left" bind:tap="onClickLeft">
+        <wxc-block wx:if="{{leftArrow || leftText}}" _pid="{{_pid}}">
+            <wxc-icon wx:if="{{ leftArrow }}" type="return" size="{{size}}" color="{{color}}" _pid="{{_pid}}"></wxc-icon>
+            <view wx:if="{{leftText}}" class="van-nav-bar__text" style="font-size:{{size/1.5}}rpx;{{color?'color:' + color : '' }}">
+                {{leftText}}
+            </view>
+        </wxc-block>
+        <slot wx:else="" name="left">
+        </slot>
+    </view>
+
+    <view class="van-nav-bar__title title-class van-ellipsis">
+        <wxc-block wx:if="{{ title }}" size="{{size}}" color="{{color}}" _pid="{{_pid}}">{{ title }}</wxc-block>
+        <slot wx:else="" name="title">
+        </slot>
+    </view>
+
+    <view class="van-nav-bar__right" bind:tap="onClickRight" style="font-size:{{size/1.5}}rpx;{{color?'color:' + color : '' }}">
+        <view wx:if="{{ rightText }}" class="van-nav-bar__text">{{ rightText }}</view>
+        <slot wx:else="" name="right">
+        </slot>
+    </view>
+
+</view>

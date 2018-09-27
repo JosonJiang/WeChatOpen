@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-button": "../../wxc-button/dist/index",
+    "i-icon": "../../wxc-icon/dist/index"
+  }
+}

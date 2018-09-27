@@ -1,0 +1,341 @@
+<template>
+  <wxc-panel title="个人档案" bind:click="onClick">
+    <view class="content">
+
+      <view class="container">
+        <view class="input-wrap">
+          <wxc-input type="text" title="工号" mode="none" placeholder="{{userInfo.EmpID}}" disabled="true"></wxc-input>
+          <wxc-input type="number" title="姓名" mode="none" placeholder="{{userInfo.EmpName}}" disabled="true"></wxc-input>
+          <wxc-input type="text" title="入职时间" mode="none" disabled="true" placeholder="入职时间"></wxc-input>
+        </view>
+      </view>
+
+    </view>
+  </wxc-panel>
+
+
+  <wxc-panel title="人事盘点" >
+    <view class="content">
+
+      <wxc-flex class="wrap" main="center" cross="center">
+
+        <view class="item">
+          <wxc-avatar class="avatar">{{0+YearLeave.UsableTime}}</wxc-avatar>
+          剩余年假
+        </view>
+        <view class="item">
+          <wxc-avatar class="avatar">{{0+Attendance.SumOverTime_W + Attendance.SumOverTime_H}}</wxc-avatar>
+          累计加班
+        </view>
+
+        <view class="item">
+          <wxc-avatar class="avatar">{{0+YearLeave.UsedTime}}</wxc-avatar>
+          累计休假
+        </view>
+
+        <view class="item">
+          <wxc-avatar class="avatar">{{0+Attendance.SumGongGan}}</wxc-avatar>
+          出差公干
+        </view>
+
+      </wxc-flex>
+
+    </view>
+  </wxc-panel>
+
+  <wxc-panel title="假勤统计" >
+    <view class="content">
+
+      <wxc-flex class="wrap" main="center" cross="center">
+
+        <view class="item">
+          <wxc-avatar class="avatar">{{0+Attendance.SumAbsentCount}}</wxc-avatar>
+          缺勤天数
+        </view>
+
+        <view class="item">
+          <wxc-avatar class="avatar">{{0+Attendance.SumV1 + Attendance.SumV2 +Attendance.SumV3 +Attendance.SumV4 + Attendance.SumV5 +Attendance.SumV6}}</wxc-avatar>
+          请假
+        </view>
+
+        <view class="item">
+          <wxc-avatar class="avatar">{{0+Attendance.SumLate10+Attendance.SumLate20+Attendance.SumLate30+Attendance.SumLate60}}</wxc-avatar>
+          迟到早退
+        </view>
+
+        <view class="item">
+          <wxc-avatar class="avatar">{{Attendance.SumNoCardTwo}}</wxc-avatar>
+          缺卡
+        </view>
+
+      </wxc-flex>
+
+
+    </view>
+  </wxc-panel>
+
+  <wxc-panel title="绩效考核评期" bindtap="onTaskTrace">
+
+    <view class="content">
+
+      <wxc-label class="label" type="fill" type-color="#747bb1" text-color="#FFF" text="{{Performance['第一季度']}}"></wxc-label>
+      <wxc-label class="label" type="fill"  text="{{Performance['第二季度']}}"></wxc-label>
+      <wxc-label class="label" type="fill" type-color="#eeeeee" text-color="#aaa" text="{{Performance['第三季度']}}"></wxc-label>
+      <wxc-label class="label"  type-color="#eeeeee"  text-color="#aaa" text="{{Performance['第四季度']}}"></wxc-label>
+    </view>
+
+  </wxc-panel>
+
+  <wxc-panel title="测试接口">
+    <wxc-flex class="x" cross="top" wrap="wrap">
+      <view class="itemX" bindtap="onMytasks">我的待办</view>
+      <view class="itemX" bindtap="onMyProcessed">我的审批</view>
+      <view class="itemX" bindtap="onMyAllAccessable">我的流程</view>
+      <view class="itemX" bindtap="onMyRequest">我的请求</view>
+      <view class="itemX" bindtap="onTaskTrace">流程进度演示</view>
+    </wxc-flex>
+  </wxc-panel>
+
+</template>
+
+<script>
+
+  var app = getApp();
+  var network = require('../../util/network.js');
+  var  $ = require('../../util/ajax.js');
+
+  export default {
+
+    config: {
+
+      navigationBarTitleText: '我的档案',
+      usingComponents: {
+        'wxc-flex': '@minui/wxc-flex',
+        'wxc-label': '@minui/wxc-label',
+        'wxc-icon': '@minui/wxc-icon',
+        'wxc-panel': '@minui/wxc-panel',
+        'wxc-input': '@minui/wxc-input',
+        'wxc-price': '@minui/wxc-price',
+        'wxc-avatar': '@minui/wxc-avatar'
+      }
+    },
+
+    data: {
+      YearLeave:{},
+      userInfo: {},
+      focus: false,
+      inputValue: '',
+      PostURL:app.globalData.OauthHost +"/WebService.asmx/YearLeaveSelect",
+      GetURL:app.globalData.OauthHost +"/WebService.asmx/YearLeaveSelect",
+      PerformanceURL:app.globalData.OauthHost +"/WebService.asmx/PerformanceSelectByEmpID",
+      AttendanceURL:app.globalData.OauthHost +"/WebService.asmx/AttendanceResult",
+      Postdata : {EmpID:"SDT12872",sEmpID:"SDT12872",m:"0",FromDate:" ",ToDate:" " },
+
+    },
+
+    methods: {
+
+    },
+    AjaxPost : function(options){
+
+      let that=this;
+
+      console.log(options);
+
+      $.ajax({
+        method: 'GET',
+        url: options.AttendanceURL,
+        data: options.Postdata,
+
+      }).then(response => {
+
+        console.log(response);
+
+        that.setData({
+          Attendance: response[0]
+        });
+
+      });
+
+
+
+      $.ajax({
+        method: 'GET',
+        url: options.GetURL,
+        data: options.Postdata,
+
+      }).then(response => {
+
+        //console.log(response);
+
+        that.setData({
+          YearLeave: response[0],
+          //userInfo:{EmpID:response[0].EmpID},
+          Postdata :{sEmpID:response[0].EmpID}
+        });
+
+
+          $.ajax({
+            method: 'GET',
+            url: options.PerformanceURL,
+            data: options.Postdata,
+
+          }).then(Performance => {
+
+            console.log(Performance);
+
+            that.setData({
+              userInfo:{
+                EmpID:Performance[0].EmpID,
+                EmpName:Performance[0].EmpName
+              },
+              Performance: Performance[1]
+            });
+
+          });
+
+         console.log(that.data);
+         //app.globalData.userInfo = options.userInfo;
+
+      })
+
+    },
+    onShow (options) {
+
+
+      this.setData({
+        ["Postdata.EmpID"]:"SDT12872",
+        ["Postdata.sEmpID"]:"SDT12872",
+        ["Postdata.m"]:"0",
+        ["Postdata.FromDate"]:" ",
+        ["Postdata.ToDate"]:" "
+      });
+
+    },
+
+    onLoad(option){
+
+      var that = this;
+      var Josonoptions = that.data;
+
+      that.AjaxPost(Josonoptions);
+    },
+
+    onClick(event) {
+
+      wx.navigateTo({
+        url: '../UserInfo/index'
+      });
+
+    },
+    onMytasks(event) {
+
+//      wx.redirectTo({
+//        url: '../Mytasks/index'
+//      });
+
+      wx.navigateTo({
+        url: '../MyTasks/index'
+      });
+
+    },
+    onTaskTrace(event) {
+      wx.navigateTo({
+        url: '../TaskTrace/index'
+      });
+    },
+    onMyRequest(event) {
+      wx.navigateTo({
+        url: '../MyRequest/index'
+      });
+    },
+    onMyProcessed(event) {
+      wx.navigateTo({
+        url: '../MyProcessed/index'
+      });
+    },
+    onMyAllAccessable(event) {
+      wx.navigateTo({
+        url: '../MyAllAccessable/index'
+      });
+    }
+
+  }
+</script>
+
+<style>
+  .label {
+    margin-right: 20 rpx;
+  }
+
+  .content {
+    padding: 30 rpx;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .input-wrap {
+    background: #fff;
+  }
+  .wrap {
+    display: block;
+    padding: 2%;
+    background: #FFF;
+  }
+  .avatar {
+    display: block;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    background: #31b0d5;
+    color: #FFF;
+    font-size: 52rpx;
+  }
+ .item {
+  width: 47%;
+  margin: 4.5%;
+  flex-grow: 0;
+  text-align:center;
+  font-size: 22rpx;
+
+}
+  .item:nth-of-type(odd) {
+    background: #fff;
+  }
+  .item:nth-of-type(2n) {
+    background: #fff;
+    font-size: 24rpx;
+  }
+
+  .X {
+    display: block;
+    padding: 2%;
+    background: #696969;
+  }
+  .itemX {
+    width: 30%;
+    height: 100rpx;
+    margin: 1.5%;
+    flex-grow: 0;
+    font-size: 26rpx;
+    line-height: 100rpx;
+    text-align: center;
+  }
+  .itemX:nth-of-type(odd) {
+    background: #afdde3
+  }
+  .itemX:nth-of-type(2n) {
+    background: #f397b2
+  }
+
+</style>
+
+
+
+
+
+
+
+

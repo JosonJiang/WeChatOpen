@@ -1,0 +1,99 @@
+<view>
+    <!-- wxp template -->
+    <wxc-panel title="个人档案" bind:click="onClick" _pid="{{_pid}}">
+        <view class="content">
+
+            <view class="container">
+                <view class="input-wrap">
+                    <wxc-input type="text" title="工号" mode="none" placeholder="{{userInfo.EmpID}}" disabled="true" _pid="{{_pid}}"></wxc-input>
+                    <wxc-input type="number" title="姓名" mode="none" placeholder="{{userInfo.EmpName}}" disabled="true" _pid="{{_pid}}"></wxc-input>
+                    <wxc-input type="text" title="入职时间" mode="none" disabled="true" placeholder="入职时间" _pid="{{_pid}}"></wxc-input>
+                </view>
+            </view>
+
+        </view>
+    </wxc-panel>
+
+
+    <wxc-panel title="人事盘点" _pid="{{_pid}}">
+        <view class="content">
+
+            <wxc-flex class="wrap" main="center" cross="center" _pid="{{_pid}}">
+
+                <view class="item">
+                    <wxc-avatar class="avatar" _pid="{{_pid}}">{{0+YearLeave.UsableTime}}</wxc-avatar>
+                    剩余年假
+                </view>
+                <view class="item">
+                    <wxc-avatar class="avatar" _pid="{{_pid}}">{{0+Attendance.SumOverTime_W + Attendance.SumOverTime_H}}</wxc-avatar>
+                    累计加班
+                </view>
+
+                <view class="item">
+                    <wxc-avatar class="avatar" _pid="{{_pid}}">{{0+YearLeave.UsedTime}}</wxc-avatar>
+                    累计休假
+                </view>
+
+                <view class="item">
+                    <wxc-avatar class="avatar" _pid="{{_pid}}">{{0+Attendance.SumGongGan}}</wxc-avatar>
+                    出差公干
+                </view>
+
+            </wxc-flex>
+
+        </view>
+    </wxc-panel>
+
+    <wxc-panel title="假勤统计" _pid="{{_pid}}">
+        <view class="content">
+
+            <wxc-flex class="wrap" main="center" cross="center" _pid="{{_pid}}">
+
+                <view class="item">
+                    <wxc-avatar class="avatar" _pid="{{_pid}}">{{0+Attendance.SumAbsentCount}}</wxc-avatar>
+                    缺勤天数
+                </view>
+
+                <view class="item">
+                    <wxc-avatar class="avatar" _pid="{{_pid}}">{{0+Attendance.SumV1 + Attendance.SumV2 +Attendance.SumV3 +Attendance.SumV4 + Attendance.SumV5 +Attendance.SumV6}}</wxc-avatar>
+                    请假
+                </view>
+
+                <view class="item">
+                    <wxc-avatar class="avatar" _pid="{{_pid}}">{{0+Attendance.SumLate10+Attendance.SumLate20+Attendance.SumLate30+Attendance.SumLate60}}</wxc-avatar>
+                    迟到早退
+                </view>
+
+                <view class="item">
+                    <wxc-avatar class="avatar" _pid="{{_pid}}">{{Attendance.SumNoCardTwo}}</wxc-avatar>
+                    缺卡
+                </view>
+
+            </wxc-flex>
+
+
+        </view>
+    </wxc-panel>
+
+    <wxc-panel title="绩效考核评期" bindtap="onTaskTrace" _pid="{{_pid}}">
+
+        <view class="content">
+
+            <wxc-label class="label" type="fill" type-color="#747bb1" text-color="#FFF" text="{{Performance['第一季度']}}" _pid="{{_pid}}"></wxc-label>
+            <wxc-label class="label" type="fill" text="{{Performance['第二季度']}}" _pid="{{_pid}}"></wxc-label>
+            <wxc-label class="label" type="fill" type-color="#eeeeee" text-color="#aaa" text="{{Performance['第三季度']}}" _pid="{{_pid}}"></wxc-label>
+            <wxc-label class="label" type-color="#eeeeee" text-color="#aaa" text="{{Performance['第四季度']}}" _pid="{{_pid}}"></wxc-label>
+        </view>
+
+    </wxc-panel>
+
+    <wxc-panel title="测试接口" _pid="{{_pid}}">
+        <wxc-flex class="x" cross="top" wrap="wrap" _pid="{{_pid}}">
+            <view class="itemX" bindtap="onMytasks">我的待办</view>
+            <view class="itemX" bindtap="onMyProcessed">我的审批</view>
+            <view class="itemX" bindtap="onMyAllAccessable">我的流程</view>
+            <view class="itemX" bindtap="onMyRequest">我的请求</view>
+            <view class="itemX" bindtap="onTaskTrace">流程进度演示</view>
+        </wxc-flex>
+    </wxc-panel>
+</view>

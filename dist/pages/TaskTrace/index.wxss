@@ -1,0 +1,12 @@
+page{
+  padding-top: 20rpx;
+}
+
+.Xpage{
+  padding: 20rpx;
+  background-color: #ffffff;
+}
+.TaskName{
+  padding: 5rpx 0 20rpx 0;
+  margin: 0rpx;
+}

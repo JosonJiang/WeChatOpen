@@ -1,0 +1,9 @@
+<view>
+    <!-- wxp template -->
+    <view class="Xpage">
+
+        <view class="TaskName">{{TaskName }}({{TaskCode}})</view>
+        <wxc-steps steps="{{steps}}" current="{{current}}" _pid="{{_pid}}"></wxc-steps>
+
+    </view>
+</view>

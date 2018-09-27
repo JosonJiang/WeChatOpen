@@ -1,0 +1,371 @@
+<template>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+    <view class="container">
+
+    <view class="input-wrap" wx:for="{{Application}}"  wx:key="{{this}}">
+      <wxc-input type="text" title="{{item.Name}}" placeholder="{{item.Value}}" readOnly="readOnly" disabled></wxc-input>
+    </view>
+
+    <view class="input-wrap" wx:for="{{FormInfo}}"  wx:key="{{this}}">
+      <wxc-input type="text" title="{{item.Name}}" placeholder="{{item.Value}}" readOnly="readOnly" disabled></wxc-input>
+    </view>
+
+    <view wx:if="{{ShowBtn}}">
+      <textarea bindblur="bindblur" style="padding:20rpx" name="Comment" placeholder="请填写审批意见" />
+    </view>
+
+  </view>
+
+   <wxc-toast is-show="{{$toast.show}}" icon="{{$toast.icon}}" icon-color="{{$toast.iconColor}}" text="{{$toast.msg}}"></wxc-toast>
+
+  <i-action-sheet wx:if="{{ShowBtn}}" visible="{{visible}}" actions="{{actions}}"  showCancel="{{true}}" bind:cancel="handleCancel" bind:click="handleClickItem" mask-closable="{{false}}" >
+
+  </i-action-sheet>
+
+  <view style="margin-top: 200rpx">
+    <i-button wx:if="{{ShowBtn}}"  type="ghost" bind:click="handleOpen">流程审批</i-button>
+    <i-button bind:click="onClickLeft">查看进度</i-button>
+  </view>
+
+  </form>
+</template>
+
+<script>
+
+  var app = getApp();
+  var network = require('../../util/network.js');
+  var  $ = require('../../util/ajax.js');
+
+  var thisutil = require('../../util/util.js');
+
+  thisutil.StartPullDownRefreh(this,app);
+
+export default {
+  config: {
+    navigationBarTitleText: '流程信息',
+    enablePullDownRefresh:true,
+    usingComponents: {
+      'wxc-icon': 'wxc-icon',
+      'wxc-navbar': 'wxc-navbar',
+      "i-action-sheet": 'wxc-actionsheet',
+      "i-button": 'wxc-button',
+      'wxc-toast': '@minui/wxc-toast',
+      'wxc-input': '@minui/wxc-input'
+    }
+  },
+  data: {
+
+    Application:{},
+    FormInfo:{},
+    PostURL:app.globalData.BPMHost +"/Mobile.ashx?UserAccount=SDT12872&Method=TaskProcess",
+    GetURL:app.globalData.BPMHost +"/Mobile.ashx?UserAccount=SDT12872&Method=GetFormInfo",
+    Postdata : {
+      Comment:"审批通过",
+      isDebug:true,
+      isWeixIn:true
+    },
+    $toast: {
+      show: false,
+      icon:"yes",
+      iconColor:"#333",
+      msg: "审批成功"
+    },
+    visible:false,
+    actions: [
+      {
+        name: '选项1',
+        color: '#ed3f14'
+      },
+      {
+        name: '选项2'
+      },
+      {
+        name: '去分享',
+        icon: 'share',
+        openType: 'share'
+      }
+    ],
+
+  },
+
+
+  bindblur(e){
+
+    console.log(e);
+
+    this.setData({
+      ["Postdata.Comment"]: e.detail.value,
+    })
+
+  },
+
+
+  onClickLeft() {
+
+
+//    wx.redirectTo({
+//      url: '../MyTasks/index?tid=701461'
+//    });
+
+    wx.navigateTo({
+      url: '../TaskTrace/index?TaskID='+this.data.Postdata.TaskID
+    });
+
+
+  },
+
+  onShow (options) {
+
+    let that = this;
+
+  },
+
+  onLoad(option){
+
+    console.log(option);
+
+    var that = this;
+    var Josonoptions = that.data;
+
+    let StepID=option.StepID;
+    let TaskID=option.TaskID;
+
+    that.setData({
+
+      ["Postdata.TaskID"]:TaskID,
+      ["Postdata.StepID"]:StepID,
+
+//      Postdata:{
+//        TaskID:TaskID,
+//        StepID:StepID,
+//      }
+
+    });
+
+    that.AjaxPost(Josonoptions);
+
+  },
+
+  AjaxPost : function(options){
+
+    let that=this;
+
+    $.ajax({
+      method: 'Post',
+      url: options.GetURL,
+      data: options.Postdata,
+      PostJson:true,
+
+      //contentType:"application/json;charset=gb2312"
+
+    }).then(response => {
+
+      console.log(response);
+
+
+      if(response.success===false){
+
+        let responseMsg=response.errorMessage;
+        that.setData({
+          $toast: {
+            show: true,
+            icon:"close",
+            iconColor:"#fff",
+            msg : responseMsg
+          }
+        });
+
+        setTimeout(() => {
+          this.setData({
+            $toast: {
+              show: false
+            }
+          });
+
+          wx.navigateBack();
+
+        }, 1500);
+
+        //console.log(that.data.$toast);
+
+      }else{
+
+      let ButtonList=[];
+      let FormInfoTitleArry=[];
+      let FormInfoBodyArry=[];
+      let FormInfoTitle= response.FormInfo[0] ? response.FormInfo[0].Rows : [];
+      let FormInfoBody=response.FormInfo[1] ? response.FormInfo[1].Rows : [];
+      let BtnList= response.ButtonList || [];
+
+      //console.log(FormInfoTitle);
+
+      FormInfoTitle.forEach(function(item,index,arrys){
+        for(var ix in item)
+        {
+          let val= item[ix];
+          if(val.Value.length>0)
+          FormInfoTitleArry.push(val);
+        }
+      });
+
+      FormInfoBody.forEach(function(item,index,arrys){
+
+          for(var ix in item)
+          {
+            let val= item[ix];
+            if(val.Value.length>0)
+              FormInfoBodyArry.push(val);
+          }
+
+        });
+
+      BtnList.forEach(function(Itemval,index,arrys){
+        let Text=Itemval.Text,
+            Action=Itemval.Action,
+            Type=Itemval.Type;
+
+        let Val={
+          name :Text,
+          color: '#ee3f14',
+          Text:Text,
+          Action :Action,
+          Type :Type
+        };
+
+        ButtonList.push(Val);
+
+        });
+
+
+//      console.log(ButtonList);
+//      console.log(FormInfoTitleArry);
+//      console.log(FormInfoBodyArry);
+
+      that.setData({
+        Application: FormInfoTitleArry,
+        FormInfo: FormInfoBodyArry,
+        actions: ButtonList,
+        ShowBtn :ButtonList.length>0
+      });
+
+        console.log(that.data);
+      //app.globalData.userInfo = options.userInfo;
+      }
+    })
+
+  },
+
+  handleOpen (e) {
+    this.setData({
+      visible: true
+    });
+    console.log(e);
+  },
+
+  handleCancel () {
+    this.setData({
+      visible: false
+    });
+  },
+
+  handleClickItem ({ detail }) {
+
+    const index = detail.index;
+    const action = [...this.data.actions];
+    const PostAction=action[index];
+    //console.log(action);
+
+    let content= '点击了选项' + index ;
+    console.log(content);
+    console.log(PostAction);
+
+    let options=this.data;
+
+    let Action=PostAction.Action;
+    let Type=PostAction.Type;
+
+    let Transfer_TransferTo=null;
+    let Consign_ConsignUsers=null;
+    let RecedeBack_ToStepID=null;
+
+    options.Postdata.Action=Action;
+    options.Postdata.Type=Type;
+
+    options.Postdata.Transfer_TransferTo=Transfer_TransferTo;
+    options.Postdata.Consign_ConsignUsers=Consign_ConsignUsers;
+    options.Postdata.RecedeBack_ToStepID=RecedeBack_ToStepID;
+
+    console.log(options);
+
+    $.ajax({
+      method: 'Post',
+      url: options.PostURL,
+      data: options.Postdata,
+      PostJson:true,
+
+    }).then(response => {
+
+      console.log(response);
+
+      //let msg=response.msg;
+
+      if(response.success){
+
+          this.setData({
+            $toast: {
+              show: true,
+            }
+          });
+          setTimeout(() => {
+            this.setData({
+              $toast: {
+                show: false
+              },
+              visible:false
+            });
+
+            wx.redirectTo({
+              url: '../MyTasks/index?'
+            });
+
+          }, 1500);
+
+      }else{
+
+        this.setData({
+          $toast: {
+            show: true,
+            msg:msg
+          }
+        });
+      }
+
+    });
+
+  },
+
+
+}
+</script>
+
+<style>
+
+  .container {
+    width: 100%;
+  }
+  .input-wrap {
+    background: #fff;
+  }
+  .input__form{
+    flex: 1;
+    height: 46rpx;
+    min-height: 46rpx;
+    line-height: 46rpx;
+    font-size: 12rpx;
+    color:#f30;
+  }
+
+  .input-wrap > input { font-size: 28rpx;}
+
+</style>

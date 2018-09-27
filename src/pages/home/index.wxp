@@ -1,0 +1,129 @@
+<template>
+  <view>
+    <view class="index-hd">
+      <image class="index-logo" src="https://s10.mogucdn.com/mlcdn/c45406/171122_5l92i48kb80j1fkha1fh1cd3h43i5_200x200.png"></image>
+      <view class="index-desc">iAnyWhere</view>
+    </view>
+
+    <view class="index-bd" bindtap="onClick">
+      Welecome
+    </view>
+
+    <view class="index-ft">
+      <view class="provider">Create By Joson</view>
+    </view>
+  </view>
+  
+</template>
+
+<script>
+export default {
+    config: {
+
+      navigationBarTitleText: 'Index',
+      usingComponents: {
+
+      }
+
+    },
+
+  data: { },
+  methods: {},
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+  onClick(event) {
+
+//    wx.redirectTo({
+//      url: '../iaywhere/index'
+//    });
+
+    wx.navigateTo({
+      url: '../iaywhere/index'
+    });
+
+    //console.log(event)
+
+  }}
+
+</script>
+
+<style>
+.index-hd {
+  padding: 70rpx;
+  text-align: center;
+}
+.index-bd {
+  padding: 20rpx 30rpx;
+  margin: 20rpx 0;
+  background-color:cadetblue;
+  color: #fff;
+  text-align: center;
+}
+.index-ft {
+  padding-bottom: 20rpx;
+  text-align: center;
+}
+.index-logo {
+  width: 100rpx;
+  height: 100rpx;
+}
+.index-desc {
+  margin-top: 20rpx;
+  color: #888888;
+  font-size: 28rpx;
+}
+
+.provider {
+  position: fixed;
+  width: 100%;
+  bottom: 120rpx;
+  color: #a9a9a9;
+  text-align: center;
+}
+</style>

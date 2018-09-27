@@ -1,0 +1,137 @@
+<template>
+  <button
+    class="i-class i-btn {{ long ? 'i-btn-long' : '' }} {{ 'i-btn-' + size }} {{ 'i-btn-' + type }} {{ 'i-btn-' + shape }} {{ loading ? 'i-btn-loading' : '' }} {{ disabled ? 'i-btn-disabled' : ''}} {{ inline ? 'i-btn-inline' : '' }}"
+    hover-class="i-btn-hover"
+    bindtap="handleTap"
+    open-type="{{ openType }}"
+    app-parameter="{{ appParameter }}"
+    hover-stop-propagation="{{ hoverStopPropagation }}"
+    hover-start-time="{{ hoverStartTime }}"
+    hover-stay-time="{{ hoverStayTime }}"
+    session-from="{{ sessionFrom }}"
+    send-message-title="{{ sendMessageTitle }}"
+    send-message-path="{{ sendMessagePath }}"
+    send-message-img="{{ sendMessageImg }}"
+    show-message-card="{{ showMessageCard }}"
+    bindcontact="bindcontact"
+    bindgetuserinfo="bindgetuserinfo"
+    bindgetphonenumber="bindgetphonenumber"
+    binderror="binderror"
+    plain="true"
+  >
+
+    <view class="i-btn-loading-inner" wx:if="{{loading}}"></view>
+    <slot></slot>
+
+  </button>
+</template>
+
+<script>
+
+export default {
+  config: {
+    component: true,
+    usingComponents: { }
+  },
+
+  data: { },
+  behaviors: [ ],
+  externalClasses: ['i-class'],
+
+  properties: {
+    // default, primary, ghost, info, success, warning, error
+    type: {
+      type: String,
+      value: '',
+    },
+    inline: {
+      type: Boolean,
+      value: false
+    },
+    // default, large, small
+    size: {
+      type: String,
+      value: '',
+    },
+    // circle, square
+    shape: {
+      type: String,
+      value: 'square'
+    },
+    disabled: {
+      type: Boolean,
+      value: false,
+    },
+    loading: {
+      type: Boolean,
+      value: false,
+    },
+    long: {
+      type: Boolean,
+      value: false
+    },
+    openType: String,
+    appParameter: String,
+    hoverStopPropagation: Boolean,
+    hoverStartTime: {
+      type: Number,
+      value: 20
+    },
+    hoverStayTime: {
+      type: Number,
+      value: 70
+    },
+    lang: {
+      type: String,
+      value: 'en'
+    },
+    sessionFrom: {
+      type: String,
+      value: ''
+    },
+    sendMessageTitle: String,
+    sendMessagePath: String,
+    sendMessageImg: String,
+    showMessageCard: Boolean
+  },
+
+  methods: {
+    handleTap () {
+      if (this.data.disabled) return false;
+      this.triggerEvent('click');
+    },
+    bindgetuserinfo({ detail = {} } = {}) {
+      this.triggerEvent('getuserinfo', detail);
+    },
+    bindcontact({ detail = {} } = {}) {
+      this.triggerEvent('contact', detail);
+    },
+    bindgetphonenumber({ detail = {} } = {}) {
+      this.triggerEvent('getphonenumber', detail);
+    },
+    binderror({ detail = {} } = {}) {
+      this.triggerEvent('error', detail);
+    }
+  }
+}
+
+</script>
+
+<style>
+  .i-btn{text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;white-space:nowrap;user-select:none;font-size:28rpx;border-radius:4rpx;border:0!important;position:relative;text-decoration:none;height:88rpx;line-height:88rpx;box-shadow:inset 0 0 0 2rpx rgba(0,0,0,.1);color:#fff!important;background:#f7f7f7!important;color:#495060!important;margin:20rpx}
+  .i-btn-hover{opacity:.9}
+  .i-btn-long{border-radius:0;margin:0;box-shadow:none}
+  .i-btn-large{height:96rpx;line-height:96rpx}
+  .i-btn-small{height:80rpx;line-height:80rpx}
+  .i-btn-primary{color:#fff!important;background:#2d8cf0!important}
+  .i-btn-ghost{color:#fff!important;background:#fff!important;color:#495060!important}
+  .i-btn-success{color:#fff!important;background:#19be6b!important}
+  .i-btn-warning{color:#fff!important;background:#f90!important}
+  .i-btn-error{color:#fff!important;background:#ed3f14!important}
+  .i-btn-info{color:#fff!important;background:#2db7f5!important}
+  .i-btn-circle{border-radius:88rpx}
+  .i-btn-large.i-btn-circle{border-radius:96rpx}
+  .i-btn-small.i-btn-circle{border-radius:80rpx}
+  .i-btn-loading{opacity:.6}.i-btn-loading-inner{display:inline-block;margin-right:24rpx;vertical-align:middle;width:28rpx;height:28rpx;background:0 0;border-radius:50%;border:4rpx solid #fff;border-color:#fff #fff #fff transparent;animation:btn-spin .6s linear;animation-iteration-count:infinite}
+  .i-btn-disabled{color:#bbbec4!important;background:#f7f7f7!important}.i-btn-inline{display:inline-block}@keyframes btn-spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+</style>

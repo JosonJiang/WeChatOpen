@@ -1,0 +1,10 @@
+.van-nav-bar{height:96rpx; position:relative;-webkit-user-select:none;user-select:none;text-align:center;line-height:96rpx;background-color:#fff}
+  .van-nav-bar__arrow{color:#38f;vertical-align:middle;-webkit-transform:rotate(180deg);transform:rotate(180deg)}
+  .van-nav-bar__arrow+.van-nav-bar__text{margin-left:-40rpx;padding-left:50rpx}
+  .van-nav-bar--fixed{left:0;width:100%;position:fixed;margin-top: 0rpx;}
+  .van-nav-bar__title{margin:0 auto;max-width:60%;font-size:32rpx}
+  .van-nav-bar__left,.van-nav-bar__right{bottom:0;font-size:28rpx;position:absolute}
+  .van-nav-bar__left{left:5rpx}
+  .van-nav-bar__right{right:15rpx}
+  .van-nav-bar__text{margin:0 -30rpx;padding:0 30rpx;display:inline-block;vertical-align:middle;}
+  .van-nav-bar__text:active{background-color:#e8e8e8}

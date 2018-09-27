@@ -1,0 +1,16 @@
+<view>
+    <!-- wxp template -->
+    <view class="list-wrap">
+
+        <view class="list-item" wx:for="{{LstItem}}" wx:key="{{LstItem.sn}}">
+            <view class="list-check" bind:click="onClick" data-name="{{item}}">
+                <wxc-list class="item" title="{{item.pn}}({{ item.sn }})" detail="{{item.desc}}" _pid="{{_pid}}"></wxc-list>
+            </view>
+        </view>
+
+        <view wx:if="{{loadmore}}">
+            <wxc-loadmore is-end="{{true}}" text="不要拉了，到底了～" icon="{{true}}" _pid="{{_pid}}"></wxc-loadmore>
+        </view>
+
+    </view>
+</view>

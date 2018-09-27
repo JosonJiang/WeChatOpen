@@ -1,0 +1,65 @@
+.label {
+    margin-right: 20 rpx;
+  }
+
+  .content {
+    padding: 30 rpx;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .input-wrap {
+    background: #fff;
+  }
+  .wrap {
+    display: block;
+    padding: 2%;
+    background: #FFF;
+  }
+  .avatar {
+    display: block;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    background: #31b0d5;
+    color: #FFF;
+    font-size: 52rpx;
+  }
+ .item {
+  width: 47%;
+  margin: 4.5%;
+  flex-grow: 0;
+  text-align:center;
+  font-size: 22rpx;
+
+}
+  .item:nth-of-type(odd) {
+    background: #fff;
+  }
+  .item:nth-of-type(2n) {
+    background: #fff;
+    font-size: 24rpx;
+  }
+
+  .X {
+    display: block;
+    padding: 2%;
+    background: #696969;
+  }
+  .itemX {
+    width: 30%;
+    height: 100rpx;
+    margin: 1.5%;
+    flex-grow: 0;
+    font-size: 26rpx;
+    line-height: 100rpx;
+    text-align: center;
+  }
+  .itemX:nth-of-type(odd) {
+    background: #afdde3
+  }
+  .itemX:nth-of-type(2n) {
+    background: #f397b2
+  }

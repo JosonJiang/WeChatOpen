@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-progress": "../../packages/wxc-progress/dist/index",
+    "i-button": "../../packages/wxc-button/dist/index"
+  },
+  "navigationBarTitleText": "Progress 进度条"
+}

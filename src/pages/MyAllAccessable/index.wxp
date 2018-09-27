@@ -1,0 +1,602 @@
+<template>
+
+  <view class="container">
+    <view class="top-menu">
+      <view class="top-menuItme" bindtap="showMenuTap" data-type="1">状态</view>
+      <view class="line"></view>
+      <view class="top-menuItme" bindtap="showMenuTap" data-type="2">时间</view>
+    </view>
+  </view>
+
+  <view class="dialog-mask" style="visibility:{{isVisible ? 'visible': 'hidden'}}" bindtap="hideMenuTap">
+  </view>
+
+  <view style="position:fixed;top:40%;box-sizing:border-box;padding:0rpx;text-align:center;width:100%">
+    <view style="padding-bottom:20rpx;height:100rpx ">{{status}}{{begin==null?"":begin}}-{{end==null?"":end}}</view>
+  </view>
+
+  <view class="list-wrap" >
+
+    <view class="list-item"  wx:for="{{LstItem.children}}" wx:key="{{idx}}"  bindtap="onClick" data-name='{{item}}'>
+
+      <wxc-list title="{{item.pn}}({{item.sn}})"  data-name='{{item}}' desc="{{item.state}}" dot="{{item.state=='Running'}}" arrow="{{false}}"></wxc-list>
+
+      <view class="list-check">
+        <wxc-list class="item"  data-name='{{item}}' title="{{item.user}}{{formatTime(item.date)}}" detail="{{item.desc}}" mode="none"></wxc-list>
+      </view>
+
+    </view>
+    <wxc-loadmore is-end="{{true}}" text="到底了～" icon="{{true}}"></wxc-loadmore>
+
+  </view>
+
+  <!--状态选择-->
+  <!--wxss样式实现方式-->
+  <!--
+  <view wx:if="{{menuType==1}}" class="state-menu {{isVisible? 'show': 'hidden'}}" style="visibility:{{isVisible ? 'visible': 'hidden'}}">
+  -->
+  <!--api动画方式-->
+  <view  wx:if="{{menuType=='1'}}" class="state-menu " animation="{{animationData}}" style="visibility:{{isVisible ? 'visible': 'hidden'}}">
+
+    <view wx:for="{{HistoryTaskType}}" class="state-item {{status==item.value ? 'border' : ''}}" bindtap="selectState" data-status="{{item.value}}">
+      {{item.name}}
+    </view>
+
+  </view>
+  <!--日期选择-->
+  <view wx:elif="{{menuType==2}} " class="state-menu " animation="{{animationData}}" style="visibility:{{isVisible ? 'visible': 'hidden'}}">
+    <view class="date">
+      <view class="classname">开始日期: </view>
+      <picker mode="date" value="{{date}}" data-type="1" bindchange="bindDateChange">
+        <view class="classname ">{{begin==null?'不限':begin}}</view>
+      </picker>
+    </view>
+    <view class="date">
+      <view class="classname">结束日期: </view>
+      <picker mode="date" value="{{date}}" data-type="2"  bindchange="bindDateChange">
+        <view class="classname">{{end==null?'不限' : end}}</view>
+      </picker>
+    </view>
+    <button class="date-btn " bindtap="sureDateTap">确定</button>
+  </view>
+
+
+</template>
+
+
+<script>
+
+  var pageIndexs=1;
+  var PageSizes=10;
+  var app = getApp();
+  var thisutil = require('../../util/util.js');
+  var network = require('../../util/network.js');
+  var  $ = require('../../util/ajax.js');
+  var animation;
+
+  thisutil.StartPullDownRefreh(this,app);
+
+export default {
+  config: {
+    navigationBarTitleText: '我的流程',
+    enablePullDownRefresh:true,
+    usingComponents: {
+      'wxc-list': '@minui/wxc-list',
+      'wxc-icon': '@minui/wxc-icon',
+      'wxc-popup': '@minui/wxc-popup',
+      'wxc-loadmore': '@minui/wxc-loadmore'
+    }
+  },
+
+  data: {
+    menuType: 0,
+    begin: null,
+    status: 1,
+    end: null,
+    isVisible: false,
+    animationData: {},
+    page:{
+      pageIndex:pageIndexs,
+      PageSize:PageSizes
+    },
+    HistoryTaskType:[
+      {name: '我的申请', value: '0', checked: 'true'},
+      {name: '我的审批', value: '1'},
+      {name: '我的任务', value: '2'},
+      {name: '我的代理', value: '3'}
+      ],
+    LstItem:{},
+    PostURL:app.globalData.BPMHost +"/Login.ashx",
+    GetURL:app.globalData.BPMHost +"/MyAllAccessable.ashx",
+    Postdata : {
+
+      uid:"SDT12872",
+      pwd:"Joson080256",
+      UserAccount:"SDT12872",
+      isDebug:true,
+      isWeixIn:true,
+      start:1,
+      limit:20
+    },
+
+  },
+
+  /** note: 在 wxp 文件或者页面文件中请去掉 methods 包装 */
+  methods: { },
+
+  onPullDownRefresh(){
+
+    let that = this;
+    let pageIndex = 1;
+    let PageSizes = that.data.page.PageSize;
+    let PageStart = pageIndex * PageSizes;
+    let PageEnd = (pageIndex+1) * PageSizes;
+
+    that.setData({
+      page: {
+        PageSize:PageSizes,
+        pageIndex: pageIndex,
+        PageStart: PageStart,
+        PageEnd:PageEnd
+      },
+      Postdata:{
+
+        uid:"SDT12872",
+        pwd:"Joson080256",
+        UserAccount:"SDT12872",
+        start:PageStart,
+        limit:PageEnd
+      }
+
+    });
+
+
+    console.log("刷新");
+
+    wx.setNavigationBarTitle({
+      title: '刷新中……'
+    });//动态设置当前页面的标题。
+
+    wx.showNavigationBarLoading();//在当前页面显示导航条加载动画。
+
+    console.log(that.data);
+
+    this.AjaxPost(that.data);
+    console.log("重新加载信息完成");
+
+    wx.hideNavigationBarLoading();//隐藏导航条加载动画。
+
+    //wx.startPullDownRefresh();
+     wx.stopPullDownRefresh(success=>{},fail=>{},complete=>{}); //停止当前页面下拉刷新。
+
+    console.log("关闭 停止当前页面下拉刷新");
+
+    wx.setNavigationBarTitle({
+      title: '动态设置当前页面的标题'
+    })//动态设置当前页面的标题。
+
+
+  },
+
+  onReachBottom(){
+
+
+
+    let that = this;
+    let pageIndex =pageIndexs;//that.data.page.pageIndex+1;
+    let PageSize =PageSizes;// that.data.page.PageSize;
+    let PageStart = pageIndex * PageSize;
+    let PageEnd = (pageIndex+1) * PageSize;
+
+    let PageStartX="page.PageStart";
+    let PageEndX="page.PageEnd";
+
+
+    that.setData({
+
+//      page: {
+//        PageSize:PageSizes,
+//        pageIndex: pageIndex,
+//        PageStart: PageStart,
+//        PageEnd:PageEnd
+//      },
+
+//      ["page.PageSize"]:PageSizes,
+//      ["page.pageIndex"]: pageIndex,
+      [PageStartX] :PageStart,
+      [PageEndX] :PageEnd,
+
+      Postdata:{
+
+        uid:"SDT12872",
+        pwd:"Joson080256",
+        UserAccount:"SDT12872",
+        start:PageStart,
+        limit:PageEnd
+      }
+
+    });
+
+    console.log(PageSize);
+    console.log(pageIndex);
+    console.log(PageSizes);
+    console.log(pageIndexs);
+
+
+    this.AjaxPost(that.data);
+
+    //pageIndexs=pageIndexs+1;
+    pageIndexs++;
+
+    console.log("页面上拉翻页测试");
+
+  },
+
+  onShow (options) {
+
+
+
+  },
+
+  onLoad(option){
+
+    let that = this;
+    let Josonoptions = that.data;
+
+    that.AjaxPost(Josonoptions);
+
+    // 初始化动画变量
+    let animation = wx.createAnimation({
+      duration: 500,
+      transformOrigin: "50% 50%",
+      timingFunction: 'ease',
+    });
+    that.animation = animation;
+
+  },
+
+  onClick(e) {
+
+    console.log(e);
+
+    let currentTarget = e.currentTarget.dataset.name;
+
+    let TaskID=currentTarget.tid;
+    let StepID=currentTarget.pid;
+
+
+    //关闭当前页面，跳转到应用内的某个页面
+//      wx.redirectTo({
+//        url: '../TaskInfo/index?TaskID='+TaskID+'&StepID='+StepID+''
+//      });
+
+    //保留当前页面，跳转到应用内的某个页面，使用 wx.navigateBack 可以返回到原页面
+    wx.navigateTo({
+      url: '../TaskInfo/index?TaskID='+TaskID+'&StepID='+StepID+''
+    })
+
+
+
+  },
+  // 显示
+  showMenuTap: function (e) {
+
+    console.log(e);
+    console.log("showMenuTap");
+    //获取点击菜单的类型 1点击状态 2点击时间
+    let menuType = e.currentTarget.dataset.type;
+
+    this.setData({
+      menuType: menuType
+    });
+
+    // 如果当前已经显示，再次点击时隐藏
+    if (this.data.isVisible == true) {
+      this.startAnimation(false, -200);
+      return
+    }
+    this.startAnimation(true, 0)
+
+  },
+  hideMenuTap: function (e) {
+    this.startAnimation(false, -200)
+  },
+  // 执行动画
+  startAnimation: function (isShow, offset) {
+    var that = this;
+    var offsetTem;
+    if (offset == 0) {
+      offsetTem = offset
+    } else {
+      offsetTem = offset + 'rpx'
+    }
+    this.animation.translateY(offset).step();
+    this.setData({
+      animationData: this.animation.export(),
+      isVisible: isShow
+    });
+    console.log(that.data)
+  },
+  // 选择状态按钮
+  selectState: function (e) {
+
+    this.startAnimation(false, -200);
+    var status = e.currentTarget.dataset.status;
+    this.setData({
+      status: status
+    });
+
+    console.log(this.data)
+
+  },
+  // 时间选择
+  bindDateChange: function (e) {
+    console.log(e);
+    if (e.currentTarget.dataset.type == 1) {
+
+      this.setData({
+        begin: e.detail.value
+      })
+
+    } else if (e.currentTarget.dataset.type == 2) {
+
+      this.setData({
+        end: e.detail.value
+      })
+
+    }
+  },
+  sureDateTap: function () {
+
+    this.data.pageNo = 1;
+    this.startAnimation(false, -200)
+
+  },
+  // 执行动画
+  startAddressAnimation: function (isShow) {
+    console.log(isShow);
+
+    let that = this;
+    if (isShow) {
+      that.animation.translateY(0 + 'vh').step()
+    } else {
+      that.animation.translateY(40 + 'vh').step()
+    }
+    that.setData({
+      animationAddressMenu: that.animation.export(),
+      addressMenuIsShow: isShow,
+    })
+  },
+
+
+  AjaxPost : function(options){
+
+    let that=this;
+
+    $.ajax({
+      method: 'POST',
+      url: options.PostURL,
+      data: options.Postdata,
+
+    }).then(response => {
+
+      //console.log(response);
+
+      $.ajax({
+        method: 'GET',
+        url: options.GetURL,
+        data: options.Postdata,
+
+      }).then(Performance => {
+
+        console.log(Performance);
+
+        that.setData({
+          LstItem: Performance
+        });
+
+      });
+
+      console.log(that.data);
+      //app.globalData.userInfo = options.userInfo;
+
+    })
+
+  },
+}
+</script>
+
+<style>
+  .list-wrap {
+    width: 100%;
+    background: #efefef;
+    padding-bottom: 30rpx;
+
+  }
+  .list-item {
+    background: #fff;
+    margin-bottom: 30rpx;
+  }
+  .list-item:last-child {
+    margin: 0;
+  }
+
+  .list-check {
+    display: flex;
+    align-items: center
+  }
+  .check-wrap {
+    position: relative;
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 30rpx;
+    border-radius: 100%;
+    border: 1px solid #d8d8d8;
+  }
+  .check {
+    position: absolute;
+    top: 0;
+    left: -2rpx;
+    width: 100%;
+    height: 100%;
+    line-height: 42rpx;
+  }
+  .list-image {
+    width: 102rpx;
+    height: 102rpx;
+    margin-left: 30rpx;
+  }
+  .radius {
+    border-radius: 100px;
+  }
+  .item {
+    flex: 1;
+  }
+  .list-image {
+    width: 102rpx;
+    height: 102rpx;
+    background: #d8d8d8;
+  }
+  .popup__content {
+    width: 100%;
+    height: 200rpx;
+    line-height: 200rpx;
+    text-align: center;
+    background: #FFFFFF;
+  }
+
+  /* directory.wxss */
+
+  .container {
+    display: block;
+    background-color: #fafafa;
+    padding: 0;
+    margin-bottom: 90rpx;
+    padding-top: 2rpx;
+  }
+
+  .top-menu {
+    display: flex;
+    position: fixed;
+    height: 80rpx;
+    z-index: 10;
+    background-color: #fff;
+    width: 100%;
+    top: 0;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 2rpx solid #ddd;
+    border-bottom: 2rpx solid #ddd;
+    font-size: 11pt;
+    color: #bdbdbd;
+  }
+
+  .line {
+    width: 1rpx;
+    font-size:32rpx;
+    height: 100%;
+    line-height: 32rpx;
+    background-color: #ddd;
+  }
+  .top-menuItme{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    margin: 150rpx;
+
+  }
+  .state-menu {
+    display: flex;
+    position: fixed;
+    left: 0;
+    padding: 10rpx 0;
+    height: 200rpx;
+    top: 80rpx;
+    width: 100%;
+    z-index: 9;
+    background-color: #fff;
+    flex-direction: row;
+    border-bottom: 2rpx solid #ddd;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .hidden.state-menu {
+    transform: translateY(-200rpx);
+    transition: all 0.4s ease;
+    visibility: hidden;
+  }
+
+  .show.state-menu {
+    transform: translateY(0);
+    transition: all 0.4s ease;
+    visibility: visible;
+  }
+
+  .dialog-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 8;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .state-item {
+    width: 20%;
+    height: 70rpx;
+    font-size: 11pt;
+    line-height: 70rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    border: 2rpx solid #ddd;
+  }
+
+  .border.state-item {
+    border: 2rpx solid #c4245c;
+  }
+
+  .date {
+    min-width: 40%;
+    display: flex;
+    font-size: 11pt;
+    color: #bdbdbd;
+    align-items: center;
+
+  }
+
+  .date-btn {
+    min-width: 80%;
+    font-size: 12pt;
+    background-color: #c4245c;
+    color: #fff;
+    /* position: fixed */
+  }
+
+
+  .picker-view {
+    width: 100%;
+    display: flex;
+    z-index:12;
+    background-color: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0rpx;
+    left: 0rpx;
+    height: 40vh;
+  }
+
+  .picker-item {
+    line-height: 70rpx;
+    margin-left: 5rpx;
+    margin-right: 5rpx;
+    text-align: center;
+  }
+
+</style>

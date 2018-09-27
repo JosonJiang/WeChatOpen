@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wxc-card": "../../packages/wxc-card/dist/index",
+    "i-action-sheet": "../../packages/wxc-actionsheet/dist/index",
+    "i-button": "../../packages/wxc-button/dist/index"
+  },
+  "navigationBarTitleText": "ActionSheet 动作面板"
+}

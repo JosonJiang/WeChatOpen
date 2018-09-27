@@ -1,0 +1,12 @@
+<view>
+    <!-- wxp template -->
+    <view class="i-index-demo">
+        <wxc-index height="100%" bind:change="onChange" _pid="{{_pid}}">
+            <wxc-index-item wx:for="{{ cities }}" wx:for-index="index" wx:key="{{index}}" wx:for-item="item" name="{{item.key}}" _pid="{{_pid}}">
+                <view class="i-index-demo-item" wx:for="{{item.list}}" wx:for-index="in" wx:key="{{in}}" wx:for-item="it">
+                    {{it.name}}
+                </view>
+            </wxc-index-item>
+        </wxc-index>
+    </view>
+</view>

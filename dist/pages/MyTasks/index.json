@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "wxc-list": "../../packages/@minui/wxc-list/dist/index",
+    "wxc-icon": "../../packages/@minui/wxc-icon/dist/index"
+  },
+  "navigationBarTitleText": "我的待办",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light"
+}

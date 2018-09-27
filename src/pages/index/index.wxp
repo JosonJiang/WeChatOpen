@@ -1,0 +1,97 @@
+<template>
+
+  <view class="i-index-demo">
+    <wxc-index height="100%" bind:change="onChange">
+      <wxc-index-item
+        wx:for="{{ cities }}"
+        wx:for-index="index"
+        wx:key="{{index}}"
+        wx:for-item="item" name="{{item.key}}">
+        <view
+          class="i-index-demo-item"
+          wx:for="{{item.list}}"
+          wx:for-index="in"
+          wx:key="{{in}}"
+          wx:for-item="it">
+          {{it.name}}
+        </view>
+      </wxc-index-item>
+    </wxc-index>
+  </view>
+
+</template>
+
+<script>
+  import { cities } from './city';
+
+  export default {
+    config: {
+      enablePullDownRefresh:false,
+      usingComponents: {
+        'wxc-index': 'wxc-index',
+        'wxc-index-item': 'wxc-index-item'
+
+      }
+    },
+    data : {
+      cities : []
+    },
+    onChange(event){
+
+      console.log(event.detail,'click right menu callback data');
+
+    },
+    onReady(){
+
+      let storeCity = new Array(26);
+      const words = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+      words.forEach((item,index)=>{
+        storeCity[index] = {
+          key : item,
+          list : []
+        }
+      });
+
+      cities.forEach((item)=>{
+
+        let firstName = item.pinyin.substring(0,1);
+        let index = words.indexOf( firstName );
+        storeCity[index].list.push({
+          name : item.name,
+          key : firstName
+        });
+
+      });
+
+      this.data.cities = storeCity;
+
+      this.setData({
+        cities : this.data.cities
+      })
+    },
+    methods: { }
+  }
+</script>
+
+<!---->
+
+<style type="less">
+
+  /*@import "../../styles/_base.less";*/
+  /*@import "../../styles/_mixins.less";*/
+
+  .i-index-demo,page{
+    width:100%;
+    height:100%;
+  }
+  .i-index-demo-item{
+    padding:20rpx;
+    border-bottom:#ddd solid 1rpx;
+    font-size: 28rpx;
+  }
+
+</style>
+
+
+
+

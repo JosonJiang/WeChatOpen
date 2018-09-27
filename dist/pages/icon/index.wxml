@@ -1,0 +1,12 @@
+<view>
+    <!-- wxp template -->
+    <wxc-navbar title="JosnJiang" leftText="返回" leftArrow="true" fixed="{{true}}" _pid="{{_pid}}">
+        <wxc-icon type="setup" slot="right" custom-class="icon" color="#F30" _pid="{{_pid}}">
+        </wxc-icon>
+    </wxc-navbar>
+
+    <view class="icon-item" wx:for="{{ list }}" wx:key="{{ item }}">
+        <wxc-icon type="{{ item }}" size="28" color="#80848f" _pid="{{_pid}}"></wxc-icon>
+        <view class="icon-item-name">{{ item }}</view>
+    </view>
+</view>

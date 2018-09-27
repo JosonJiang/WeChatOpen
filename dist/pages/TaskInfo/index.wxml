@@ -1,0 +1,33 @@
+<view>
+    <!-- wxp template -->
+    <form bindsubmit="formSubmit" bindreset="formReset">
+
+        <view class="container">
+
+            <view class="input-wrap" wx:for="{{Application}}" wx:key="{{this}}">
+                <wxc-input type="text" title="{{item.Name}}" placeholder="{{item.Value}}" readOnly="readOnly" disabled _pid="{{_pid}}"></wxc-input>
+            </view>
+
+            <view class="input-wrap" wx:for="{{FormInfo}}" wx:key="{{this}}">
+                <wxc-input type="text" title="{{item.Name}}" placeholder="{{item.Value}}" readOnly="readOnly" disabled _pid="{{_pid}}"></wxc-input>
+            </view>
+
+            <view wx:if="{{ShowBtn}}">
+                <textarea bindblur="bindblur" style="padding:20rpx" name="Comment" placeholder="请填写审批意见">
+    </textarea></view>
+
+        </view>
+
+        <wxc-toast is-show="{{$toast.show}}" icon="{{$toast.icon}}" icon-color="{{$toast.iconColor}}" text="{{$toast.msg}}" _pid="{{_pid}}"></wxc-toast>
+
+        <i-action-sheet wx:if="{{ShowBtn}}" visible="{{visible}}" actions="{{actions}}" showCancel="{{true}}" bind:cancel="handleCancel" bind:click="handleClickItem" mask-closable="{{false}}" _pid="{{_pid}}">
+
+        </i-action-sheet>
+
+        <view style="margin-top: 200rpx">
+            <i-button wx:if="{{ShowBtn}}" type="ghost" bind:click="handleOpen" _pid="{{_pid}}">流程审批</i-button>
+            <i-button bind:click="onClickLeft" _pid="{{_pid}}">查看进度</i-button>
+        </view>
+
+    </form>
+</view>

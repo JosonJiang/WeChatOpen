@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/ActionSheet/index",
+    "pages/Card/index",
+    "pages/iaywhere/index",
+    "pages/icon/index",
+    "pages/index/index",
+    "pages/MyAllAccessable/index",
+    "pages/MyProcessed/index",
+    "pages/MyRequest/index",
+    "pages/MyTasks/index",
+    "pages/navbar/index",
+    "pages/progress/index",
+    "pages/tag/index",
+    "pages/TaskInfo/index",
+    "pages/TaskTrace/index",
+    "pages/UserInfo/index"
+  ],
+  "window": {
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#efefef",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "Min 小程序示例项目",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 10000
+  }
+}

@@ -1,0 +1,5 @@
+<view class="custom-class demo-block {{ padding ? 'demo-block--padding' : '' }}" style="font-size:{{size/1.5}}rpx;{{color?'color:' + color : '' }}">
+    <view wx:if="{{ title }}" class="demo-block__title">{{ title }}</view>
+    <slot>
+    </slot>
+</view>

@@ -1,0 +1,52 @@
+<template>
+  <view>
+    <!-- wxp template -->
+    <page></page>
+  </view>
+</template>
+
+<script>
+
+
+  export default {
+    config: {
+      pages: [],
+      window: {
+        enablePullDownRefresh:true,
+        backgroundTextStyle: 'dark',
+        backgroundColor: '#efefef',
+        navigationBarBackgroundColor: '#ffffff',
+        navigationBarTitleText: 'Min 小程序示例项目',
+        navigationBarTextStyle: 'black'
+      },
+      networkTimeout: {
+        request: 10000
+      }
+    },
+    globalData: {
+      SystemInfo: wx.getSystemInfoSync(),
+      AppID:"wxb1479ac989ee10a4",
+      AppSercret:"e508285f372ecd3e7494fe85344e3777",
+      OauthHost:"https://oauth.skyworthdigital.com/WebService/",
+      WebApiHost:"https://webapi.skyworthdigital.com/",
+      BPMHost:"https://oauth.skyworthdigital.com/WebService/Iservice/"
+    },
+
+    onLaunch (options) { },
+    onError: function(msg) {
+      console.log(msg)
+    },
+    onShow (options) { },
+    onHide () { }
+  }
+</script>
+
+<style>
+
+  page {
+    background-color: #F8F8F8;
+    height: 100%;
+    font-size: 32rpx;
+    line-height: 1.5;
+  }
+</style>

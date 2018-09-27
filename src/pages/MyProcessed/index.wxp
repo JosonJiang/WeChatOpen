@@ -1,0 +1,108 @@
+
+<template>
+
+  <view class="list-wrap">
+
+    <view class="list-item" wx:for="{{LstItem}}" wx:key="{{LstItem.sn}}">
+
+      <view class="list-check" bindtap="onClick" data-name='{{item}}'>
+        <wxc-list class="item"  title="{{item.pn}}({{ item.sn }})" detail="{{item.desc}}"></wxc-list>
+      </view>
+
+    </view>
+
+  </view>
+
+</template>
+
+<script>
+
+  var app = getApp();
+  var network = require('../../util/network.js');
+  var  $ = require('../../util/ajax.js');
+
+  export default {
+    config: {
+      navigationBarTitleText: '我的审批',
+      usingComponents: {
+        'wxc-list': '@minui/wxc-list',
+        'wxc-icon': '@minui/wxc-icon'
+      }
+    },
+    data: {
+      LstItem:[],
+      PostURL:app.globalData.BPMHost +"/Login.ashx",
+      GetURL:app.globalData.BPMHost +"/MyProcessed.ashx",
+      Postdata : {uid:"SDT12872",pwd:"Joson080256",UserAccount:"SDT12872",isDebug:true,isWeixIn:true},
+    },
+    onClick(e) {
+
+      console.log(e);
+
+      var currentTarget = e.currentTarget.dataset.name;
+
+      let TaskID=currentTarget.tid;
+      let StepID=currentTarget.pid;
+
+      //关闭当前页面，跳转到应用内的某个页面
+//      wx.redirectTo({
+//        url: '../TaskInfo/index?TaskID='+TaskID+'&StepID='+StepID+''
+//      });
+
+      //保留当前页面，跳转到应用内的某个页面，使用 wx.navigateBack 可以返回到原页面
+      wx.navigateTo({
+        url: '../TaskInfo/index?TaskID='+TaskID+'&StepID='+StepID+''
+      })
+
+    },
+
+    onShow (options) {
+
+    },
+
+    onLoad(option){
+
+      var that = this;
+      var Josonoptions = that.data;
+      that.AjaxPost(Josonoptions);
+
+    },
+    AjaxPost : function(options){
+
+      let that=this;
+
+      $.ajax({
+        method: 'POST',
+        url: options.PostURL,
+        data: options.Postdata,
+
+      }).then(response => {
+
+        //console.log(response);
+
+        $.ajax({
+          method: 'GET',
+          url: options.GetURL,
+          data: options.Postdata,
+
+        }).then(Performance => {
+
+          console.log(Performance);
+
+          that.setData({
+            LstItem: Performance.children
+          });
+
+        });
+
+        console.log(that.data);
+        //app.globalData.userInfo = options.userInfo;
+
+      })
+
+    },
+  }
+</script>
+
+<style>
+</style>

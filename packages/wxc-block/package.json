@@ -1,0 +1,16 @@
+{
+  "name": "wxc-block",
+  "version": "1.0.0",
+  "description": "block - 小程序组件",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meili/minui/tree/master/packages/wxc-block"
+  },
+  "author": "",
+  "license": "MIT",
+  "minConfig": {
+    "component": true
+  }
+}

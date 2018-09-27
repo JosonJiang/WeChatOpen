@@ -1,0 +1,54 @@
+<template>
+
+  <view class="custom-class demo-block {{ padding ? 'demo-block--padding' : '' }}" style="font-size:{{size/1.5}}rpx;{{color?'color:' + color : '' }}">
+    <view wx:if="{{ title }}" class="demo-block__title">{{ title }}</view>
+    <slot />
+  </view>
+
+</template>
+
+<script>
+export default {
+  config: {
+    component: true,
+    usingComponents: { }
+  },
+  behaviors: [ ],
+  properties: {
+    size:{
+      type: Number,
+      value: 24
+    },
+    color:{
+      type: String,
+      value: "#333"
+    },
+    title: String,
+    padding: Boolean
+  },
+
+  externalClasses: ['custom-class'],
+  data: { },
+  methods: { }
+}
+
+
+</script>
+
+<style>
+  .demo-block__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: rgba(69,90,100,.6);
+    padding: 40rpx 30rpx 30rpx;
+  }
+
+  .demo-block--padding {
+    padding: 0 30rpx;
+  }
+
+  .demo-block--padding .demo-block__title {
+    padding-left: 0;
+  }
+</style>

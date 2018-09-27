@@ -1,0 +1,17 @@
+<view>
+    <!-- wxp template -->
+    <view>
+        <view class="index-hd">
+            <image class="index-logo" src="https://s10.mogucdn.com/mlcdn/c45406/171122_5l92i48kb80j1fkha1fh1cd3h43i5_200x200.png"></image>
+            <view class="index-desc">iAnyWhere</view>
+        </view>
+
+        <view class="index-bd" bindtap="onClick">
+            Welecome
+        </view>
+
+        <view class="index-ft">
+            <view class="provider">Create By Joson</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,16 @@
+{
+  "name": "wxc-index-item",
+  "version": "1.0.0",
+  "description": "index-item - 小程序组件",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meili/minui/tree/master/packages/wxc-index-item"
+  },
+  "author": "",
+  "license": "MIT",
+  "minConfig": {
+    "component": true
+  }
+}

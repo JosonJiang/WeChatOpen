@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wxc-icon": "../../packages/wxc-icon/dist/index",
+    "wxc-navbar": "../../packages/wxc-navbar/dist/index"
+  },
+  "enablePullDownRefresh": false
+}

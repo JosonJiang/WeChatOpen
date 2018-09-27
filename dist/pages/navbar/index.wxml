@@ -1,0 +1,11 @@
+<view>
+    <!-- wxp template -->
+    <wxc-navbar title="标题" leftText="返回" leftArrow="{{true}}" rightText="确定" fixed="false" size="40" color="#F30" bind:click-left="onClickLeft" bind:click-right="onClickRight" _pid="{{_pid}}"></wxc-navbar>
+
+
+    <!--
+  <wxc-navbar title="JosnJiang" leftText="返回" leftArrow="true">
+    <wxc-icon type="setup" slot="right" custom-class="icon"  color="#F30" />
+  </wxc-navbar>
+-->
+</view>

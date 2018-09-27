@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "wxc-list": "../../packages/@minui/wxc-list/dist/index",
+    "wxc-icon": "../../packages/@minui/wxc-icon/dist/index",
+    "wxc-loadmore": "../../packages/@minui/wxc-loadmore/dist/index"
+  },
+  "navigationBarTitleText": "我的请求",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light"
+}

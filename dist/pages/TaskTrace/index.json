@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "wxc-steps": "../../packages/@minui/wxc-steps/dist/index"
+  },
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "TaskTrace",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#fffeee",
+  "backgroundTextStyle": "light"
+}

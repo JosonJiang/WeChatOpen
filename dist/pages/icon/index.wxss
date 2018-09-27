@@ -1,0 +1,13 @@
+.icon-item{
+    display: block;
+    padding: 32rpx 0;
+    width: 33.33%;
+    float: left;
+    text-align: center;
+  }
+  .icon-item-name{
+    font-size: 20rpx;
+  }
+  .icon {
+    color: #38f;
+  }

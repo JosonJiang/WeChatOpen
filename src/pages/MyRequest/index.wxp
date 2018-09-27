@@ -1,0 +1,362 @@
+<template>
+  <view class="list-wrap">
+
+    <view class="list-item" wx:for="{{LstItem}}" wx:key="{{LstItem.sn}}">
+      <view class="list-check" bind:click="onClick" data-name='{{item}}'>
+        <wxc-list class="item" title="{{item.pn}}({{ item.sn }})" detail="{{item.desc}}"></wxc-list>
+      </view>
+    </view>
+
+    <view wx:if="{{loadmore}}">
+       <wxc-loadmore  is-end="{{true}}" text="不要拉了，到底了～" icon="{{true}}"></wxc-loadmore>
+    </view>
+
+  </view>
+</template>
+
+<script>
+
+  var pageIndexs=1;
+  var PageSizes=10;
+  var app = getApp();
+  var network = require('../../util/network.js');
+  var  $ = require('../../util/ajax.js');
+
+  var JOSON= require('../../util/json2.js');
+
+  var thisutil = require('../../util/util.js');
+  thisutil.StartPullDownRefreh(this,app);
+  let Item= [];
+
+export default {
+  config: {
+
+    navigationBarTitleText: '我的请求',
+    navigationBarBackgroundColor: "#ffffff",
+    navigationBarTextStyle: "black",
+    backgroundColor: "#eeeeee",
+    backgroundTextStyle: "light",
+
+    usingComponents: {
+      'wxc-list': '@minui/wxc-list',
+      'wxc-icon': '@minui/wxc-icon',
+      'wxc-loadmore': '@minui/wxc-loadmore'
+    }
+
+  },
+  data: {
+    check: true,
+    loadmore:false,
+    LstItem:[],
+    PostURL:app.globalData.BPMHost +"/Login.ashx",
+    GetURL:app.globalData.BPMHost +"/MyRequests.ashx",
+    Postdata : {
+      uid:"SDT12872",
+      pwd:"Joson080256",
+      UserAccount:"SDT12872",
+      start:pageIndexs,
+      limit:PageSizes,
+      isDebug:true,
+      isWeixIn:true
+    },
+    page:{
+      iCount:0,
+      PageIndex:pageIndexs,
+      PageSize:PageSizes
+    },
+  },
+  onShow (options) {
+
+
+  },
+  onLoad(option){
+
+    var that = this;
+    var Josonoptions = that.data;
+    that.AjaxPost(Josonoptions);
+
+  },
+  AjaxPost : function(options){
+
+    let that=this;
+
+    $.ajax({
+      method: 'POST',
+      url: options.PostURL,
+      data: options.Postdata,
+
+    }).then(response => {
+
+      //console.log(response);
+
+      $.ajax({
+        method: 'GET',
+        url: options.GetURL,
+        data: options.Postdata,
+
+      }).then(Performance => {
+
+        let iCounts= Performance.total;
+        let PageStart=that.data.page.PageStart;
+        let PageEnd=that.data.page.PageEnd;
+
+        console.log(Performance);
+
+        Performance.children.forEach(function (children,index,arrys) {
+          Item.push(children);
+        });
+
+        //console.log(Item);
+
+        that.setData({
+          ["page.iCount"]:iCounts,
+          LstItem :  Performance.children
+        });
+
+      });
+
+      console.log(that.data);
+
+
+    })
+
+  },
+
+
+  onClick(e) {
+
+    console.log(e);
+
+    let currentTarget = e.currentTarget.dataset.name;
+
+    let TaskID=currentTarget.tid;
+    let StepID=currentTarget.pid;
+
+    //关闭当前页面，跳转到应用内的某个页面
+//      wx.redirectTo({
+//        url: '../TaskInfo/index?TaskID='+TaskID+'&StepID='+StepID+''
+//      });
+
+    //保留当前页面，跳转到应用内的某个页面，使用 wx.navigateBack 可以返回到原页面
+    wx.navigateTo({
+      url: '../TaskInfo/index?TaskID='+TaskID+'&StepID='+StepID+''
+    })
+
+
+
+  },
+
+  onPullDownRefresh(){
+
+    let CurrentPageIndexs=1;
+
+    let that = this;
+    let iCounts =  that.data.page.iCount;
+    let PageStarts=that.data.page.PageStart;
+    let PageEnds=that.data.page.PageEnd;
+    let PageEndloadmore=false;
+
+
+    if(iCounts>PageStarts)
+    {
+      CurrentPageIndexs=   pageIndexs <=1 ? pageIndexs :  pageIndexs--;
+
+      //if( pageIndexs > 1)  pageIndexs--;
+
+      let pageIndex =pageIndexs;
+      let PageSize = that.data.page.PageSize;
+      let PageStart = pageIndex <=1 ? 1 : (pageIndex * PageSize);
+      let PageEnd =  pageIndex <=1 ? PageSize : (pageIndex+1) * PageSize;
+
+      that.setData({
+
+        page: {
+          PageSize:PageSize,
+          pageIndex: pageIndex,
+          PageStart: PageStart,
+          PageEnd:PageEnd
+        },
+
+        Postdata:{
+
+          uid:"SDT12872",
+          pwd:"Joson080256",
+          UserAccount:"SDT12872",
+          start: PageStart,
+          limit: PageSize
+        }
+
+      });
+
+      console.log("下拉翻页，翻页到"+pageIndexs+"页");
+
+      //动态设置当前页面的标题。
+      wx.setNavigationBarTitle({
+        title: '当前'+CurrentPageIndexs+"页的标题"
+      });
+
+
+    }else{
+
+      PageEndloadmore=true;
+      console.log("下拉翻页第一页了 这是第"+ (pageIndexs) +"页");
+
+    }
+
+    console.log("刷新 pageIndexs:"+pageIndexs+"页");
+
+
+    wx.showNavigationBarLoading();//在当前页面显示导航条加载动画。
+
+    //console.log(that.data);
+
+    that.AjaxPost(that.data);
+
+    console.log("重新加载信息完成");
+
+    //wx.startPullDownRefresh();
+    wx.stopPullDownRefresh(success=>{},fail=>{},complete=>{}); //停止当前页面下拉刷新。
+
+    wx.hideNavigationBarLoading();//隐藏导航条加载动画。
+
+
+    console.log("关闭 停止当前页面下拉刷新");
+
+  },
+
+  onReachBottom(){
+
+    let that = this;
+    let PageIndex =pageIndexs;//that.data.page.pageIndex+1;
+    let PageSize =PageSizes;// that.data.page.PageSize;
+    let PageStart = (PageIndex) * PageSize;
+    let PageEnd = (PageIndex+1) * PageSize;
+
+    let PageStartX="page.PageStart";
+    let PageEndX="page.PageEnd";
+
+
+    that.setData({
+
+//      page: {
+//        PageSize:PageSizes,
+//        pageIndex: pageIndex,
+//        PageStart: PageStart,
+//        PageEnd:PageEnd
+//      },
+
+      ["page.PageSize"]:PageSize,
+      ["page.PageIndex"]: PageIndex,
+      [PageStartX] :PageStart,
+      [PageEndX] :PageEnd,
+
+      Postdata:{
+
+        uid:"SDT12872",
+        pwd:"Joson080256",
+        UserAccount:"SDT12872",
+        start:PageStart,
+        limit:PageSize
+      }
+
+    });
+
+//    console.log(PageSize);
+//    console.log(PageIndex);
+//    console.log(PageSizes);
+//    console.log(pageIndexs);
+
+
+    this.AjaxPost(that.data);
+
+    let iCounts =  that.data.page.iCount;
+    let PageStarts=that.data.page.PageStart;
+    let PageEnds=that.data.page.PageEnd;
+    let PageEndloadmore=false;
+    let ShowPageIndex=1;
+
+    if(iCounts>PageStarts && iCounts>=PageEnds)
+    {
+
+       pageIndexs++;
+       ShowPageIndex=pageIndexs;
+
+
+      console.log("页面上拉翻页，翻页到"+pageIndexs+"页");
+
+    }else{
+
+      PageEndloadmore=true;
+      ShowPageIndex= pageIndexs+1;
+
+      console.log("页面上拉翻页测试!最后一页了 这是第"+ (pageIndexs+1) +"页");
+
+    }
+
+    that.setData({loadmore:PageEndloadmore});
+
+    //动态设置当前页面的标题。
+    wx.setNavigationBarTitle({
+      title: '当前'+ShowPageIndex+"页的标题"
+    });
+
+  },
+
+}
+</script>
+
+
+<style>
+  .list-wrap {
+    width: 100%;
+    background: #efefef;
+    padding-bottom: 30rpx;
+    padding-top: 30rpx;
+  }
+  .list-item {
+    background: #fff;
+    margin-bottom: 30rpx;
+  }
+  .list-item:last-child {
+    margin: 0;
+  }
+
+  .list-check {
+    display: flex;
+    align-items: center
+  }
+  .check-wrap {
+    position: relative;
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 30rpx;
+    border-radius: 100%;
+    border: 1px solid #d8d8d8;
+  }
+  .check {
+    position: absolute;
+    top: 0;
+    left: -2rpx;
+    width: 100%;
+    height: 100%;
+    line-height: 42rpx;
+  }
+  .list-image {
+    width: 102rpx;
+    height: 102rpx;
+    margin-left: 30rpx;
+  }
+  .radius {
+    border-radius: 100px;
+  }
+  .item {
+    flex: 1;
+  }
+  .list-image {
+    width: 102rpx;
+    height: 102rpx;
+    background: #d8d8d8;
+  }
+</style>
+
+

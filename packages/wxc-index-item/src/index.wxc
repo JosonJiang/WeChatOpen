@@ -1,0 +1,101 @@
+<template>
+
+  <view class="i-index-item i-class">
+    <view class="i-index-item-header">{{name}}</view>
+    <view class="i-index-item-content">
+      <slot></slot>
+    </view>
+  </view>
+
+  <wxs module="parse">
+    module.exports = {
+
+    }
+  </wxs>
+
+</template>
+
+
+
+<script>
+
+export default {
+  config: {
+    component: true,
+    usingComponents: { }
+  },
+  behaviors: [ ],
+  externalClasses: ['i-class'],
+  properties : {
+    name : {
+      type : String,
+      value : ''
+    }
+  },
+  relations : {
+    '../../wxc-index/dist/index' : {
+      type : 'parent'
+    }
+  },
+  data : {
+    top : 0,
+    height : 0,
+    currentName : ''
+  },
+  methods: {
+    updateDataChange() {
+      const className = '.i-index-item';
+      const query = wx.createSelectorQuery().in(this);
+      query.select( className ).boundingClientRect((res)=>{
+        this.setData({
+          top : res.top,
+          height : res.height,
+          currentName : this.data.name
+        })
+      }).exec()
+    }
+  }
+
+}
+
+
+</script>
+
+<!--
+
+<style type="less">
+  @import "../../styles/_base.less";
+  @import "../../styles/_mixins.less";
+</style>
+
+-->
+
+<style>
+
+/*
+  .i-index-item-header{
+    height:30px;
+    line-height:30px;
+    background:#eee;
+    font-size:14px;
+    padding-left:10px;
+    width:100%;
+    box-sizing:border-box
+  }
+  .i-index-item-content{font-size:14px}
+*/
+
+  .i-index-item-header{
+    height:60rpx;
+    line-height:60rpx;
+    background:#eee;
+    font-size:28rpx;
+    padding-left:20rpx;
+    width:100%;
+    box-sizing:border-box
+  }
+  .i-index-item-content{
+    font-size:28rpx
+  }
+
+</style>

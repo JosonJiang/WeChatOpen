@@ -1,0 +1,94 @@
+<template>
+  <view
+    class="custom-class van-nav-bar van-hairline--bottom {{ fixed ? 'van-nav-bar--fixed' : '' }}"
+    style="z-index:{{zIndex}}">
+
+    <view class="van-nav-bar__left" bind:tap="onClickLeft">
+      <wxc-block wx:if="{{leftArrow || leftText}}">
+        <wxc-icon wx:if="{{ leftArrow }}" type="return" size="{{size}}" color="{{color}}"></wxc-icon>
+        <view wx:if="{{leftText}}" class="van-nav-bar__text" style="font-size:{{size/1.5}}rpx;{{color?'color:' + color : '' }}">
+          {{leftText}}
+        </view>
+      </wxc-block>
+      <slot wx:else name="left" />
+    </view>
+
+    <view class="van-nav-bar__title title-class van-ellipsis">
+      <wxc-block wx:if="{{ title }}" size="{{size}}" color="{{color}}">{{ title }}</wxc-block>
+      <slot wx:else name="title" />
+    </view>
+
+    <view class="van-nav-bar__right" bind:tap="onClickRight" style="font-size:{{size/1.5}}rpx;{{color?'color:' + color : '' }}">
+      <view wx:if="{{ rightText }}"  class="van-nav-bar__text">{{ rightText }}</view>
+      <slot wx:else name="right" />
+    </view>
+
+  </view>
+
+</template>
+
+<script>
+
+export default {
+  config: {
+    component: true,
+    usingComponents: {
+      "wxc-icon": "wxc-icon",
+      "wxc-block":"wxc-block"
+    }
+  },
+  options: {
+    multipleSlots: true
+  },
+  behaviors: [ ],
+
+  data: { },
+  externalClasses: ['custom-class'],
+  properties: {
+    title: String,
+    leftText: String,
+    rightText: String,
+    leftArrow: {
+      type: Boolean,
+      value: true
+    },
+    fixed: Boolean,
+    size:{
+      type: Number,
+      value: 48
+    },
+    color:{
+      type: String,
+      value: "#333"
+    },
+    zIndex: {
+      type: Number,
+      value: 1
+    }
+  },
+  methods: {
+    onClickLeft() {
+      this.triggerEvent('click-left');
+    },
+
+    onClickRight() {
+      this.triggerEvent('click-right');
+    }
+  }
+
+}
+
+</script>
+
+<style>
+  .van-nav-bar{height:96rpx; position:relative;-webkit-user-select:none;user-select:none;text-align:center;line-height:96rpx;background-color:#fff}
+  .van-nav-bar__arrow{color:#38f;vertical-align:middle;-webkit-transform:rotate(180deg);transform:rotate(180deg)}
+  .van-nav-bar__arrow+.van-nav-bar__text{margin-left:-40rpx;padding-left:50rpx}
+  .van-nav-bar--fixed{left:0;width:100%;position:fixed;margin-top: 0rpx;}
+  .van-nav-bar__title{margin:0 auto;max-width:60%;font-size:32rpx}
+  .van-nav-bar__left,.van-nav-bar__right{bottom:0;font-size:28rpx;position:absolute}
+  .van-nav-bar__left{left:5rpx}
+  .van-nav-bar__right{right:15rpx}
+  .van-nav-bar__text{margin:0 -30rpx;padding:0 30rpx;display:inline-block;vertical-align:middle;}
+  .van-nav-bar__text:active{background-color:#e8e8e8}
+</style>

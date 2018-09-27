@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "i-tag": "../../packages/wxc-tag/dist/index"
+  }
+}

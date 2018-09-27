@@ -1,0 +1,10 @@
+.tag-example{
+    padding:20rpx;
+  }
+  .one-tag{
+    font-size:28rpx;
+    margin:40rpx 10rpx 10rpx 0;
+  }
+  .i-tags{
+    margin:20rpx 10rpx 0 0;
+  }

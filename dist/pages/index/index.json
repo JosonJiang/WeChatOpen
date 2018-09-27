@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wxc-index": "../../packages/wxc-index/dist/index",
+    "wxc-index-item": "../../packages/wxc-index-item/dist/index"
+  },
+  "enablePullDownRefresh": false
+}

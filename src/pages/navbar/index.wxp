@@ -1,0 +1,50 @@
+<template>
+
+  <wxc-navbar
+    title="标题"
+    leftText="返回"
+    leftArrow="{{true}}"
+    rightText="确定"
+    fixed="false"
+    size="40"
+    color="#F30"
+    bind:click-left="onClickLeft"
+    bind:click-right="onClickRight"
+  ></wxc-navbar>
+
+
+<!--
+  <wxc-navbar title="JosnJiang" leftText="返回" leftArrow="true">
+    <wxc-icon type="setup" slot="right" custom-class="icon"  color="#F30" />
+  </wxc-navbar>
+-->
+
+
+
+</template>
+
+<script>
+  export default {
+    config: {
+      enablePullDownRefresh: false,
+      usingComponents: {
+        'wxc-icon': 'wxc-icon',
+        'wxc-navbar': 'wxc-navbar'
+      }
+    },
+    data: {
+
+    },
+    onClickLeft() {
+      wx.showToast({ title: '点击返回', icon: 'none' });
+    },
+
+    onClickRight() {
+      wx.showToast({ title: '点击按钮', icon: 'none' });
+    },
+    methods: { }
+  }
+</script>
+
+<style>
+</style>

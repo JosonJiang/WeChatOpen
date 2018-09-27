@@ -1,0 +1,16 @@
+.container {
+    width: 100%;
+  }
+  .input-wrap {
+    background: #fff;
+  }
+  .input__form{
+    flex: 1;
+    height: 46rpx;
+    min-height: 46rpx;
+    line-height: 46rpx;
+    font-size: 12rpx;
+    color:#f30;
+  }
+
+  .input-wrap > input { font-size: 28rpx;}

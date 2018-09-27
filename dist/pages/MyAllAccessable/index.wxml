@@ -1,0 +1,62 @@
+<view>
+    <!-- wxp template -->
+    <view class="container">
+        <view class="top-menu">
+            <view class="top-menuItme" bindtap="showMenuTap" data-type="1">状态</view>
+            <view class="line"></view>
+            <view class="top-menuItme" bindtap="showMenuTap" data-type="2">时间</view>
+        </view>
+    </view>
+
+    <view class="dialog-mask" style="visibility:{{isVisible ? 'visible': 'hidden'}}" bindtap="hideMenuTap">
+    </view>
+
+    <view style="position:fixed;top:40%;box-sizing:border-box;padding:0rpx;text-align:center;width:100%">
+        <view style="padding-bottom:20rpx;height:100rpx ">{{status}}{{begin==null?"":begin}}-{{end==null?"":end}}</view>
+    </view>
+
+    <view class="list-wrap">
+
+        <view class="list-item" wx:for="{{LstItem.children}}" wx:key="{{idx}}" bindtap="onClick" data-name="{{item}}">
+
+            <wxc-list title="{{item.pn}}({{item.sn}})" data-name="{{item}}" desc="{{item.state}}" dot="{{item.state=='Running'}}" arrow="{{false}}" _pid="{{_pid}}"></wxc-list>
+
+            <view class="list-check">
+                <wxc-list class="item" data-name="{{item}}" title="{{item.user}}{{formatTime(item.date)}}" detail="{{item.desc}}" mode="none" _pid="{{_pid}}"></wxc-list>
+            </view>
+
+        </view>
+        <wxc-loadmore is-end="{{true}}" text="到底了～" icon="{{true}}" _pid="{{_pid}}"></wxc-loadmore>
+
+    </view>
+
+    <!--状态选择-->
+    <!--wxss样式实现方式-->
+    <!--
+  <view wx:if="{{menuType==1}}" class="state-menu {{isVisible? 'show': 'hidden'}}" style="visibility:{{isVisible ? 'visible': 'hidden'}}">
+  -->
+    <!--api动画方式-->
+    <view wx:if="{{menuType=='1'}}" class="state-menu " animation="{{animationData}}" style="visibility:{{isVisible ? 'visible': 'hidden'}}">
+
+        <view wx:for="{{HistoryTaskType}}" class="state-item {{status==item.value ? 'border' : ''}}" bindtap="selectState" data-status="{{item.value}}">
+            {{item.name}}
+        </view>
+
+    </view>
+    <!--日期选择-->
+    <view wx:elif="{{menuType==2}} " class="state-menu " animation="{{animationData}}" style="visibility:{{isVisible ? 'visible': 'hidden'}}">
+        <view class="date">
+            <view class="classname">开始日期: </view>
+            <picker mode="date" value="{{date}}" data-type="1" bindchange="bindDateChange">
+                <view class="classname ">{{begin==null?'不限':begin}}</view>
+            </picker>
+        </view>
+        <view class="date">
+            <view class="classname">结束日期: </view>
+            <picker mode="date" value="{{date}}" data-type="2" bindchange="bindDateChange">
+                <view class="classname">{{end==null?'不限' : end}}</view>
+            </picker>
+        </view>
+        <button class="date-btn " bindtap="sureDateTap">确定</button>
+    </view>
+</view>

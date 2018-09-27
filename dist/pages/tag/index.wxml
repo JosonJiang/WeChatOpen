@@ -1,0 +1,35 @@
+<view>
+    <!-- wxp template -->
+    <view class="tag-example">
+        <view class="one-tag">基本用法</view>
+        <i-tag _pid="{{_pid}}">标签一</i-tag>
+        <view class="one-tag">设置边框配置</view>
+        <i-tag class="i-tags" name="标签一" type="border" color="red" _pid="{{_pid}}">
+            标签一
+        </i-tag>
+        <i-tag class="i-tags" name="标签一" color="green" type="border" _pid="{{_pid}}">
+            标签一
+        </i-tag>
+        <view class="one-tag">各种颜色配置</view>
+        <i-tag class="i-tags" name="单个标签" _pid="{{_pid}}">
+            标签一
+        </i-tag>
+        <i-tag class="i-tags" name="单个标签" color="red" _pid="{{_pid}}">
+            标签一
+        </i-tag>
+        <i-tag class="i-tags" name="标签一" color="green" _pid="{{_pid}}">
+            标签一
+        </i-tag>
+        <i-tag class="i-tags" name="标签一" color="blue" _pid="{{_pid}}">
+            标签一
+        </i-tag>
+        <i-tag class="i-tags" name="标签一" color="yellow" _pid="{{_pid}}">
+            标签一
+        </i-tag>
+        <view class="one-tag">多个标签</view>
+        <i-tag wx:for="{{tags}}" wx:key="{{index}}" bindchange="onChange" checkable="{{true}}" name="{{index}}" color="{{item.color}}" checked="{{item.checked}}" type="border" style="margin-right:5px;" _pid="{{_pid}}">
+            {{item.name}}
+        </i-tag>
+
+    </view>
+</view>
