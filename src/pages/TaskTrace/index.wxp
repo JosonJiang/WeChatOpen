@@ -90,8 +90,8 @@
           Performance.children.forEach(function (value, i) {
             let stepItem = {};
             stepItem = {
-              title: value["StepDisplayName"] + "\n\r\r\n\t"+ value["FinishAt"],
-              desc: value["Recipient"] //+ value["SelActionDisplayString"]
+              title:  value["Recipient"]  + " "+ value["FinishAt"], //+ ""+ value["SelActionDisplayString"],
+              desc:   value["StepDisplayName"]
             };
             that.data.TaskTrace.push(stepItem);
             that.data.current = value["Finished"]  ? i : i - 1

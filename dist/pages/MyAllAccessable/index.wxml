@@ -11,9 +11,11 @@
     <view class="dialog-mask" style="visibility:{{isVisible ? 'visible': 'hidden'}}" bindtap="hideMenuTap">
     </view>
 
-    <view style="position:fixed;top:40%;box-sizing:border-box;padding:0rpx;text-align:center;width:100%">
-        <view style="padding-bottom:20rpx;height:100rpx ">{{status}}{{begin==null?"":begin}}-{{end==null?"":end}}</view>
-    </view>
+    <!--
+  <view style="position:fixed;top:40%;box-sizing:border-box;padding:0rpx;text-align:center;width:100%">
+    <view style="padding-bottom:20rpx;height:100rpx ">{{status}}{{begin==null?"":begin}}-{{end==null?"":end}}</view>
+  </view>
+-->
 
     <view class="list-wrap">
 
@@ -38,8 +40,8 @@
     <!--api动画方式-->
     <view wx:if="{{menuType=='1'}}" class="state-menu " animation="{{animationData}}" style="visibility:{{isVisible ? 'visible': 'hidden'}}">
 
-        <view wx:for="{{HistoryTaskType}}" class="state-item {{status==item.value ? 'border' : ''}}" bindtap="selectState" data-status="{{item.value}}">
-            {{item.name}}
+        <view wx:for="{{TaskState}}" wx:key="{{item.value}}" class="state-item {{status==item.value ? 'border' : ''}}" bindtap="selectState" data-status="{{item.value}}">
+            {{item.text}}
         </view>
 
     </view>
@@ -53,9 +55,12 @@
         </view>
         <view class="date">
             <view class="classname">结束日期: </view>
-            <picker mode="date" value="{{date}}" data-type="2" bindchange="bindDateChange">
+            <picker mode="date" value="{{date}}" fields="year" data-type="2" bindchange="bindDateChange">
                 <view class="classname">{{end==null?'不限' : end}}</view>
             </picker>
+        </view>
+        <view class="keyWord">
+            <wxc-input type="text" name="KeyWords" icon="search" bind:blur="bindKeyWordChange" placeholder="流程名称、流程编号" _pid="{{_pid}}"></wxc-input>
         </view>
         <button class="date-btn " bindtap="sureDateTap">确定</button>
     </view>

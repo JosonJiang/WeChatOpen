@@ -18,7 +18,6 @@
     "pages/UserInfo/index"
   ],
   "window": {
-    "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark",
     "backgroundColor": "#efefef",
     "navigationBarBackgroundColor": "#ffffff",

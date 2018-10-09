@@ -3,6 +3,11 @@
 
     <view class="container">
 
+
+      <view class="input-wrap" wx:for="{{TaskCommInfo}}"  wx:key="{{this}}">
+        <wxc-input type="text" title="{{item.Title}}" placeholder="{{item.Value}}" readOnly="readOnly" disabled></wxc-input>
+      </view>
+
     <view class="input-wrap" wx:for="{{Application}}"  wx:key="{{this}}">
       <wxc-input type="text" title="{{item.Name}}" placeholder="{{item.Value}}" readOnly="readOnly" disabled></wxc-input>
     </view>
@@ -191,14 +196,19 @@ export default {
 
       }else{
 
+      console.log(response);
+
+      let TaskCommList=[];
       let ButtonList=[];
       let FormInfoTitleArry=[];
       let FormInfoBodyArry=[];
+      let TaskCommArry=[];
       let FormInfoTitle= response.FormInfo[0] ? response.FormInfo[0].Rows : [];
       let FormInfoBody=response.FormInfo[1] ? response.FormInfo[1].Rows : [];
       let BtnList= response.ButtonList || [];
+      let TaskComm=response.TaskCommList[0] ? response.TaskCommList[0] : [];
 
-      //console.log(FormInfoTitle);
+      //console.log(TaskComm);
 
       FormInfoTitle.forEach(function(item,index,arrys){
         for(var ix in item)
@@ -233,11 +243,50 @@ export default {
           Type :Type
         };
 
-        ButtonList.push(Val);
+          ButtonList.push(Val);
 
         });
 
 
+        for(var Item in TaskComm) {
+
+          var Title="",ShowValue="";
+          let Text=Item,Value=TaskComm[Item];
+
+          switch(Text){
+            case "ProcessName" :Title="流程名称"; break;
+            case "SerialNum" :Title="流程编号"; break;
+            case "CreateAt" :Title="提交时间"; break;
+            case "OwnerFullName" :Title="流程发起人"; break;
+            //case "ApplicantAccount" :Title="发起人工号"; break;
+            case "TaskState" :Title="流程状态"; break;
+            default: Title="";
+          }
+
+          switch(Value){
+            case "Running" :ShowValue="进行中"; break;
+            case "Approved" :ShowValue="已完成"; break;
+            case "Rejected" :ShowValue="已拒绝"; break;
+            case "Aborted" :ShowValue="已退回"; break;
+            default:ShowValue=Value;
+          }
+
+          let Val={
+            Title :Title,
+            Value :ShowValue
+          };
+
+          if(Title.length>0 && ShowValue !== "null"){
+
+            //console.log(Title,":",ShowValue);
+            TaskCommList.push(Val);
+
+          }
+          //console.log(Item,":",TaskComm[Item]);
+
+        }
+
+//      console.log(TaskCommList);
 //      console.log(ButtonList);
 //      console.log(FormInfoTitleArry);
 //      console.log(FormInfoBodyArry);
@@ -246,11 +295,12 @@ export default {
         Application: FormInfoTitleArry,
         FormInfo: FormInfoBodyArry,
         actions: ButtonList,
+        TaskCommInfo:TaskCommList,
         ShowBtn :ButtonList.length>0
       });
 
         console.log(that.data);
-      //app.globalData.userInfo = options.userInfo;
+
       }
     })
 

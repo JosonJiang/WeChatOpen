@@ -7,12 +7,11 @@
 
 <script>
 
-
   export default {
     config: {
       pages: [],
       window: {
-        enablePullDownRefresh:true,
+        //enablePullDownRefresh:true,
         backgroundTextStyle: 'dark',
         backgroundColor: '#efefef',
         navigationBarBackgroundColor: '#ffffff',
@@ -24,11 +23,20 @@
       }
     },
     globalData: {
+
+      HasLogin: false,
+      UnionID:null,
+      OpenID: null,
+      Code:null,
+      EmpID:null,
+      UserInfo: null,
+
       SystemInfo: wx.getSystemInfoSync(),
       AppID:"wxb1479ac989ee10a4",
       AppSercret:"e508285f372ecd3e7494fe85344e3777",
       OauthHost:"https://oauth.skyworthdigital.com/WebService/",
       WebApiHost:"https://webapi.skyworthdigital.com/",
+      mSkyworthHost:"http://m.skyworthdigital.com/",
       BPMHost:"https://oauth.skyworthdigital.com/WebService/Iservice/"
     },
 

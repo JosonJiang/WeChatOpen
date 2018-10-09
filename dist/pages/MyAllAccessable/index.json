@@ -2,6 +2,7 @@
   "usingComponents": {
     "wxc-list": "../../packages/@minui/wxc-list/dist/index",
     "wxc-icon": "../../packages/@minui/wxc-icon/dist/index",
+    "wxc-input": "../../packages/@minui/wxc-input/dist/index",
     "wxc-popup": "../../packages/@minui/wxc-popup/dist/index",
     "wxc-loadmore": "../../packages/@minui/wxc-loadmore/dist/index"
   },

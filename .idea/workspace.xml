@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b094a683-4fac-46e3-bf39-a30186ebca4c" name="Default" comment="" />
+    <list default="true" id="b094a683-4fac-46e3-bf39-a30186ebca4c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app.js" afterPath="$PROJECT_DIR$/dist/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app.json" afterPath="$PROJECT_DIR$/dist/app.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/MyAllAccessable/index.js" afterPath="$PROJECT_DIR$/dist/pages/MyAllAccessable/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/MyAllAccessable/index.json" afterPath="$PROJECT_DIR$/dist/pages/MyAllAccessable/index.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/MyAllAccessable/index.wxml" afterPath="$PROJECT_DIR$/dist/pages/MyAllAccessable/index.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/MyAllAccessable/index.wxss" afterPath="$PROJECT_DIR$/dist/pages/MyAllAccessable/index.wxss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/MyRequest/index.js" afterPath="$PROJECT_DIR$/dist/pages/MyRequest/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/MyRequest/index.wxml" afterPath="$PROJECT_DIR$/dist/pages/MyRequest/index.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/MyTasks/index.js" afterPath="$PROJECT_DIR$/dist/pages/MyTasks/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/TaskInfo/index.js" afterPath="$PROJECT_DIR$/dist/pages/TaskInfo/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/TaskInfo/index.wxml" afterPath="$PROJECT_DIR$/dist/pages/TaskInfo/index.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/TaskTrace/index.js" afterPath="$PROJECT_DIR$/dist/pages/TaskTrace/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/home/index.js" afterPath="$PROJECT_DIR$/dist/pages/home/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/home/index.json" afterPath="$PROJECT_DIR$/dist/pages/home/index.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/home/index.wxml" afterPath="$PROJECT_DIR$/dist/pages/home/index.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/pages/iaywhere/index.js" afterPath="$PROJECT_DIR$/dist/pages/iaywhere/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/util/ajax.js" afterPath="$PROJECT_DIR$/dist/util/ajax.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.wxa" afterPath="$PROJECT_DIR$/src/app.wxa" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/MyAllAccessable/index.wxp" afterPath="$PROJECT_DIR$/src/pages/MyAllAccessable/index.wxp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/MyRequest/index.wxp" afterPath="$PROJECT_DIR$/src/pages/MyRequest/index.wxp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/MyTasks/index.wxp" afterPath="$PROJECT_DIR$/src/pages/MyTasks/index.wxp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/TaskInfo/index.wxp" afterPath="$PROJECT_DIR$/src/pages/TaskInfo/index.wxp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/TaskTrace/index.wxp" afterPath="$PROJECT_DIR$/src/pages/TaskTrace/index.wxp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/home/index.wxp" afterPath="$PROJECT_DIR$/src/pages/home/index.wxp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/iaywhere/index.wxp" afterPath="$PROJECT_DIR$/src/pages/iaywhere/index.wxp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/util/ajax.js" afterPath="$PROJECT_DIR$/src/util/ajax.js" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -14,21 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/navbar/index.wxp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.wxc" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packages/wxc-navbar/src/index.wxc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="15" column="62" lean-forward="false" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+            <state relative-caret-position="1512">
+              <caret line="56" column="10" lean-forward="false" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -37,25 +56,19 @@
       <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/MyAllAccessable/index.wxp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+            <state relative-caret-position="216">
+              <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="128" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#view#1;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#view#2;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#view#0;n#view#2;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#view#3;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#view#4;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#view#4;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#view#5;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#view#5;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#3834#4856#0" expanded="false" />
-                <element signature="e#5896#5904#0" expanded="false" />
-                <element signature="e#6690#7035#0" expanded="false" />
-                <element signature="e#7065#7107#0" expanded="false" />
-                <element signature="e#7163#7478#0" expanded="false" />
-                <element signature="e#7520#7690#0" expanded="false" />
-                <element signature="e#7733#7983#0" expanded="false" />
-                <element signature="e#8012#8082#0" expanded="false" />
-                <element signature="e#8137#8437#0" expanded="false" />
+                <element signature="n#view#0;n#view#4;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#view#1;n#view#4;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#6887#7322#0" expanded="false" />
+                <element signature="e#7360#7705#0" expanded="false" />
+                <element signature="e#7735#7777#0" expanded="false" />
+                <element signature="e#7833#8148#0" expanded="false" />
+                <element signature="e#9318#9619#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -64,29 +77,14 @@
       <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/MyTasks/index.wxp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="351">
+              <caret line="88" column="6" lean-forward="false" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
               <folding>
                 <element signature="e#40#431#0" expanded="false" />
                 <element signature="e#433#939#0" expanded="false" />
-                <element signature="e#2028#2131#0" expanded="false" />
-                <element signature="e#2165#2730#0" expanded="false" />
-                <element signature="e#2748#3200#0" expanded="false" />
-                <element signature="e#3429#3527#0" expanded="false" />
-                <element signature="e#3541#3594#0" expanded="false" />
-                <element signature="e#3619#3639#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="json2.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/json2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6021">
-              <caret line="592" column="22" lean-forward="false" selection-start-line="592" selection-start-column="9" selection-end-line="592" selection-end-column="22" />
-              <folding>
-                <element signature="e#6870#17330#0" expanded="false" />
+                <element signature="e#3976#4074#0" expanded="false" />
+                <element signature="e#4088#4141#0" expanded="false" />
+                <element signature="e#4166#4186#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,25 +93,27 @@
       <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/MyRequest/index.wxp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+            <state relative-caret-position="1674">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
-                <element signature="e#1778#2566#0" expanded="false" />
-                <element signature="e#4655#6213#0" expanded="false" />
-                <element signature="e#6251#6349#0" expanded="false" />
-                <element signature="e#6363#6416#0" expanded="false" />
-                <element signature="e#6441#6461#0" expanded="false" />
+                <element signature="e#1977#2765#0" expanded="false" />
+                <element signature="e#4854#6412#0" expanded="false" />
+                <element signature="e#6450#6548#0" expanded="false" />
+                <element signature="e#6562#6615#0" expanded="false" />
+                <element signature="e#6640#6660#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/home/index.wxp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-              <folding />
+            <state relative-caret-position="-448">
+              <caret line="60" column="20" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="20" />
+              <folding>
+                <element signature="e#1285#1730#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,7 +121,7 @@
       <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/index/index.wxp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
+            <state relative-caret-position="1647">
               <caret line="61" column="11" lean-forward="false" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
               <folding />
             </state>
@@ -131,25 +131,60 @@
       <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/util/util.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
+            <state relative-caret-position="-26">
               <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="73" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="es6-promise.auto.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/es6-promise.auto.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json2.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/json2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="592" column="22" lean-forward="false" selection-start-line="592" selection-start-column="9" selection-end-line="592" selection-end-column="22" />
+              <folding>
+                <element signature="e#6870#17330#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="network.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/network.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1160">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/TaskInfo/index.wxp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-927">
-              <caret line="220" column="11" lean-forward="false" selection-start-line="220" selection-start-column="11" selection-end-line="220" selection-end-column="11" />
+            <state relative-caret-position="351">
+              <caret line="302" column="0" lean-forward="true" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
               <folding>
-                <element signature="n#style#0;n#textarea#0;n#view#2;n#view#0;n#form#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#textarea#0;n#view#3;n#view#0;n#form#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#view#1;n#form#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#3566#3719#0" expanded="false" />
-                <element signature="e#3748#3891#0" expanded="false" />
-                <element signature="e#5489#5561#0" expanded="false" />
-                <element signature="e#5582#5635#0" expanded="false" />
+                <element signature="e#4715#4873#0" expanded="false" />
+                <element signature="e#4930#5105#0" expanded="false" />
+                <element signature="e#6983#7055#0" expanded="false" />
+                <element signature="e#7076#7129#0" expanded="false" />
+                <element signature="e#7163#8632#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -158,67 +193,15 @@
       <file leaf-file-name="ajax.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/util/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="116" column="41" lean-forward="false" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
-              <folding>
-                <element signature="e#3385#3764#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/app.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-              <folding>
-                <marker date="1538039733245" expanded="true" signature="0:184" ph="{...}" />
-                <marker date="1538039733245" expanded="true" signature="13:184" ph="[...]" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/iaywhere/index.wxp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="129" column="89" lean-forward="false" selection-start-line="129" selection-start-column="65" selection-end-line="129" selection-end-column="89" />
-              <folding>
-                <element signature="n#wxc-panel#1;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#wxc-panel#2;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#wxc-panel#3;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#4208#4216#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.wxa" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app.wxa">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1107">
-              <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+            <state relative-caret-position="213">
+              <caret line="144" column="10" lean-forward="false" selection-start-line="144" selection-start-column="10" selection-end-line="144" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/TaskTrace/index.wxp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-              <folding>
-                <element signature="e#1610#1712#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="min.config.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/min.config.json">
+      <file leaf-file-name="city.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/city.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -228,10 +211,44 @@
         </entry>
       </file>
       <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/iaywhere/index.wxp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="485">
+              <caret line="242" column="28" lean-forward="false" selection-start-line="242" selection-start-column="23" selection-end-line="242" selection-end-column="28" />
+              <folding>
+                <element signature="n#wxc-panel#1;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#wxc-panel#2;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#wxc-panel#3;n#template#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.wxa" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app.wxa">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="810">
+              <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/TaskTrace/index.wxp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="87" column="31" lean-forward="false" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.wxp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/MyProcessed/index.wxp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="621">
+              <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -283,7 +300,17 @@
       <find>userInfo</find>
       <find>EmpName</find>
       <find>PerformanceURL</find>
+      <find>HistoryTaskType</find>
+      <find>status</find>
+      <find>selectState</find>
+      <find>bindKeyWordChange</find>
+      <find>onClick</find>
+      <find>AttendanceURL</find>
+      <find>toString</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -328,17 +355,17 @@
         <option value="$PROJECT_DIR$/src/util/json2.js" />
         <option value="$PROJECT_DIR$/project.config.json" />
         <option value="$PROJECT_DIR$/src/util/util.js" />
-        <option value="$PROJECT_DIR$/src/app.wxa" />
-        <option value="$PROJECT_DIR$/src/pages/MyAllAccessable/index.wxp" />
-        <option value="$PROJECT_DIR$/src/pages/TaskTrace/index.wxp" />
-        <option value="$PROJECT_DIR$/dist/app.json" />
-        <option value="$PROJECT_DIR$/src/util/ajax.js" />
-        <option value="$PROJECT_DIR$/src/pages/iaywhere/index.wxp" />
-        <option value="$PROJECT_DIR$/src/pages/TaskInfo/index.wxp" />
-        <option value="$PROJECT_DIR$/src/pages/MyTasks/index.wxp" />
-        <option value="$PROJECT_DIR$/src/pages/MyRequest/index.wxp" />
         <option value="$PROJECT_DIR$/src/pages/MyProcessed/index.wxp" />
+        <option value="$PROJECT_DIR$/src/pages/MyRequest/index.wxp" />
+        <option value="$PROJECT_DIR$/src/pages/MyAllAccessable/index.wxp" />
+        <option value="$PROJECT_DIR$/dist/app.json" />
+        <option value="$PROJECT_DIR$/src/pages/TaskTrace/index.wxp" />
         <option value="$PROJECT_DIR$/src/pages/home/index.wxp" />
+        <option value="$PROJECT_DIR$/src/pages/iaywhere/index.wxp" />
+        <option value="$PROJECT_DIR$/src/app.wxa" />
+        <option value="$PROJECT_DIR$/src/util/ajax.js" />
+        <option value="$PROJECT_DIR$/src/pages/MyTasks/index.wxp" />
+        <option value="$PROJECT_DIR$/src/pages/TaskInfo/index.wxp" />
       </list>
     </option>
   </component>
@@ -357,6 +384,7 @@
     <option name="width" value="1936" />
     <option name="height" value="1176" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -373,6 +401,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -403,6 +432,13 @@
               <item name="min-weapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="iaywhere" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="min-weapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="min-weapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="MyAllAccessable" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -411,13 +447,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="MyProcessed" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="min-weapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="min-weapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="MyRequest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="min-weapp" type="b2602c69:ProjectViewProjectNode" />
@@ -433,11 +462,16 @@
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="TaskInfo" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="min-weapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="min-weapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -489,12 +523,13 @@
       <workItem from="1537179737844" duration="62309000" />
       <workItem from="1537433184310" duration="42660000" />
       <workItem from="1537836563686" duration="57068000" />
-      <workItem from="1538016971434" duration="15215000" />
+      <workItem from="1538016971434" duration="35402000" />
+      <workItem from="1538962495071" duration="24334000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191485000" />
+    <option name="totallyTimeSpent" value="236006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -502,11 +537,11 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14955239" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32981783" sideWeight="0.5018431" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30680728" sideWeight="0.50394946" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32981783" sideWeight="0.49815693" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30680728" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -528,10 +563,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/MyAllAccessable/index.wxp</url>
-          <line>66</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/index-item/index.wxp</url>
           <line>22</line>
           <option name="timeStamp" value="2" />
@@ -544,58 +575,14 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/MyProcessed/index.wxp</url>
           <line>95</line>
-          <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="12" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/packages/wxc-progress/dist/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/pages/progress/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/network.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="60" column="2" lean-forward="false" selection-start-line="60" selection-start-column="2" selection-end-line="60" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/wxc-tag/src/index.wxc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="94" column="19" lean-forward="false" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/packages/wxc-tag/dist/index.wxss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/wxc-actionsheet/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/base/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-165">
@@ -631,7 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -712,7 +698,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -727,23 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-324">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/city.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-405">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/json2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6021">
-          <caret line="592" column="22" lean-forward="false" selection-start-line="592" selection-start-column="9" selection-end-line="592" selection-end-column="22" />
-          <folding>
-            <element signature="e#6870#17330#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -784,22 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="73" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/UserInfo/index.wxp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-162">
@@ -818,7 +770,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/index/index.wxp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
+        <state relative-caret-position="1647">
           <caret line="61" column="11" lean-forward="false" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
           <folding />
         </state>
@@ -826,148 +778,218 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/packages/wxc-navbar/src/index.wxc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="15" column="62" lean-forward="false" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+        <state relative-caret-position="1512">
+          <caret line="56" column="10" lean-forward="false" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/app.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding>
-            <marker date="1538039733245" expanded="true" signature="0:184" ph="{...}" />
-            <marker date="1538039733245" expanded="true" signature="13:184" ph="[...]" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/TaskTrace/index.wxp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="e#1610#1712#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/ajax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="116" column="41" lean-forward="false" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
-          <folding>
-            <element signature="e#3385#3764#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.wxa">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1107">
-          <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/iaywhere/index.wxp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="129" column="89" lean-forward="false" selection-start-line="129" selection-start-column="65" selection-end-line="129" selection-end-column="89" />
-          <folding>
-            <element signature="n#wxc-panel#1;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#wxc-panel#2;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#wxc-panel#3;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#4208#4216#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/TaskInfo/index.wxp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-927">
-          <caret line="220" column="11" lean-forward="false" selection-start-line="220" selection-start-column="11" selection-end-line="220" selection-end-column="11" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#view#2;n#view#0;n#form#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#1;n#form#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#3566#3719#0" expanded="false" />
-            <element signature="e#3748#3891#0" expanded="false" />
-            <element signature="e#5489#5561#0" expanded="false" />
-            <element signature="e#5582#5635#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/MyAllAccessable/index.wxp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#view#1;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#2;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#0;n#view#2;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#4;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#view#4;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#view#5;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#view#5;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#3834#4856#0" expanded="false" />
-            <element signature="e#5896#5904#0" expanded="false" />
-            <element signature="e#6690#7035#0" expanded="false" />
-            <element signature="e#7065#7107#0" expanded="false" />
-            <element signature="e#7163#7478#0" expanded="false" />
-            <element signature="e#7520#7690#0" expanded="false" />
-            <element signature="e#7733#7983#0" expanded="false" />
-            <element signature="e#8012#8082#0" expanded="false" />
-            <element signature="e#8137#8437#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/MyProcessed/index.wxp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="621">
+          <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/MyRequest/index.wxp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        <state relative-caret-position="1674">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <element signature="e#1778#2566#0" expanded="false" />
-            <element signature="e#4655#6213#0" expanded="false" />
-            <element signature="e#6251#6349#0" expanded="false" />
-            <element signature="e#6363#6416#0" expanded="false" />
-            <element signature="e#6441#6461#0" expanded="false" />
+            <element signature="e#1977#2765#0" expanded="false" />
+            <element signature="e#4854#6412#0" expanded="false" />
+            <element signature="e#6450#6548#0" expanded="false" />
+            <element signature="e#6562#6615#0" expanded="false" />
+            <element signature="e#6640#6660#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/MyTasks/index.wxp">
+    <entry file="file://$PROJECT_DIR$/dist/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/app.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/packages/@minui/wxc-list/dist/index.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/packages/@minui/wxc-list/dist/index.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/packages/@minui/wxc-list/dist/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1323">
+          <caret line="49" column="11" lean-forward="false" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/TaskTrace/index.wxp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="87" column="31" lean-forward="false" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/es6-promise.auto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#40#431#0" expanded="false" />
-            <element signature="e#433#939#0" expanded="false" />
-            <element signature="e#2028#2131#0" expanded="false" />
-            <element signature="e#2165#2730#0" expanded="false" />
-            <element signature="e#2748#3200#0" expanded="false" />
-            <element signature="e#3429#3527#0" expanded="false" />
-            <element signature="e#3541#3594#0" expanded="false" />
-            <element signature="e#3619#3639#0" expanded="false" />
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/json2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="592" column="22" lean-forward="false" selection-start-line="592" selection-start-column="9" selection-end-line="592" selection-end-column="22" />
+          <folding>
+            <element signature="e#6870#17330#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/network.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1160">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/city.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/iaywhere/index.wxp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="242" column="28" lean-forward="false" selection-start-line="242" selection-start-column="23" selection-end-line="242" selection-end-column="28" />
+          <folding>
+            <element signature="n#wxc-panel#1;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#wxc-panel#2;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#wxc-panel#3;n#template#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/home/index.wxp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        <state relative-caret-position="-448">
+          <caret line="60" column="20" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="20" />
+          <folding>
+            <element signature="e#1285#1730#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="144" column="10" lean-forward="false" selection-start-line="144" selection-start-column="10" selection-end-line="144" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="73" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.wxa">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/MyTasks/index.wxp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="88" column="6" lean-forward="false" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
+          <folding>
+            <element signature="e#40#431#0" expanded="false" />
+            <element signature="e#433#939#0" expanded="false" />
+            <element signature="e#3976#4074#0" expanded="false" />
+            <element signature="e#4088#4141#0" expanded="false" />
+            <element signature="e#4166#4186#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/MyAllAccessable/index.wxp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="128" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#view#1;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#3;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#4;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#view#0;n#view#4;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#view#1;n#view#4;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#6887#7322#0" expanded="false" />
+            <element signature="e#7360#7705#0" expanded="false" />
+            <element signature="e#7735#7777#0" expanded="false" />
+            <element signature="e#7833#8148#0" expanded="false" />
+            <element signature="e#9318#9619#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/TaskInfo/index.wxp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="302" column="0" lean-forward="true" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#textarea#0;n#view#3;n#view#0;n#form#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#1;n#form#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#4715#4873#0" expanded="false" />
+            <element signature="e#4930#5105#0" expanded="false" />
+            <element signature="e#6983#7055#0" expanded="false" />
+            <element signature="e#7076#7129#0" expanded="false" />
+            <element signature="e#7163#8632#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

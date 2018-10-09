@@ -5,33 +5,131 @@
       <view class="index-desc">iAnyWhere</view>
     </view>
 
+    <block wx:if="{{HasLogin === true}}">
     <view class="index-bd" bindtap="onClick">
       Welecome
     </view>
+    </block>
+
+
+    <block wx:else="{{HasLogin === false}}">
+      <view class="index-bd"  bindtap="login">微信登录</view>
+    </block>
 
     <view class="index-ft">
-      <view class="provider">Create By Joson</view>
+      <view class="provider">创维数字移动办公</view>
     </view>
   </view>
-  
+
 </template>
 
 <script>
+let app = getApp();
+var  $ = require('../../util/ajax.js');
+
 export default {
     config: {
-
-      navigationBarTitleText: 'Index',
+      navigationBarTitleText: '创维数字移动办公',
       usingComponents: {
 
       }
 
     },
 
-  data: { },
+  data: {
+
+    PostURL:app.globalData.WebApiHost +"api/WxOpen/GetJsCode2",
+    GetURL:app.globalData.WebApiHost +"api/WxOpen/GetJsCode2",
+    Postdata : {},
+
+
+  },
   methods: {},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  AjaxPost : function(options){
+
+    console.log(options);
+
+    let that=this;
+
+    $.ajax({
+      method: 'GET',
+      url: options.GetURL,
+      data: options.Postdata,
+      PostJson:true,
+
+    }).then(response => {
+
+      //console.log(response);
+
+      if(response.success===false){
+
+        let responseMsg=response.errorMessage;
+
+//        that.setData({
+//          $toast: {
+//            show: true,
+//            icon:"close",
+//            iconColor:"#fff",
+//            msg : responseMsg
+//          }
+//        });
+//
+
+        setTimeout(() => {
+
+//          this.setData({
+//            $toast: {
+//              show: false
+//            }
+//          });
+
+          wx.navigateBack();
+
+        }, 1500);
+
+
+      }else{
+
+        let UnionID= response.unionid;
+        let OpenID= response.openid;
+
+        app.globalData.UnionID = UnionID;
+        app.globalData.OpenID =  OpenID;
+
+        wx.navigateTo({
+          url: '../iaywhere/index?OpenID='+OpenID+'&UnionID='+UnionID+''
+        });
+
+      }
+    })
+
+  },
+
+  login: function () {
+    let that = this;
+    wx.login({
+
+      success: function (res) {
+
+        console.info(res);
+
+        app.globalData.Code = res.code;
+        app.globalData.HasLogin = true;
+
+        that.setData({
+          ["Postdata.Code"]:res.code,
+          HasLogin: true,
+          Code: res.code
+        });
+
+        that.AjaxPost(that.data);
+      }
+    })
+  },
+
   onReady: function () {
 
   },
@@ -43,6 +141,14 @@ export default {
 
   },
 
+  onload: function () {
+
+    this.setData({
+      HasLogin: app.globalData.HasLogin,
+      Code: app.globalData.Code
+    })
+
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -77,19 +183,27 @@ export default {
   onShareAppMessage: function () {
 
   },
+
   onClick(event) {
+
+    let that=this;
 
 //    wx.redirectTo({
 //      url: '../iaywhere/index'
 //    });
 
+    //console.log(that.data);
+    //that.AjaxPost(that.data);
+
+
+  },
+  onClick_WhenLogin(event) {
     wx.navigateTo({
       url: '../iaywhere/index'
     });
 
-    //console.log(event)
-
-  }}
+  }
+}
 
 </script>
 

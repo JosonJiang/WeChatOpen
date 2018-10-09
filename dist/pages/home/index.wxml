@@ -6,12 +6,19 @@
             <view class="index-desc">iAnyWhere</view>
         </view>
 
-        <view class="index-bd" bindtap="onClick">
-            Welecome
-        </view>
+        <block wx:if="{{HasLogin === true}}">
+            <view class="index-bd" bindtap="onClick">
+                Welecome
+            </view>
+        </block>
+
+
+        <block wx:else="{{HasLogin === false}}">
+            <view class="index-bd" bindtap="login">微信登录</view>
+        </block>
 
         <view class="index-ft">
-            <view class="provider">Create By Joson</view>
+            <view class="provider">创维数字移动办公</view>
         </view>
     </view>
 </view>

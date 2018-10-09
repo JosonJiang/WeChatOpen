@@ -2,7 +2,7 @@
   <view class="list-wrap">
 
     <view class="list-item" wx:for="{{LstItem}}" wx:key="{{LstItem.sn}}">
-      <view class="list-check" bind:click="onClick" data-name='{{item}}'>
+      <view class="list-check" bindtap="onClick" data-name='{{item}}'>
         <wxc-list class="item" title="{{item.pn}}({{ item.sn }})" detail="{{item.desc}}"></wxc-list>
       </view>
     </view>
@@ -59,6 +59,15 @@ export default {
       isDebug:true,
       isWeixIn:true
     },
+    state:[
+
+      {text:"全部", value:"All"},
+      {text:"已完成", value:"Approved"},
+      {text:"进行中", value:"Running"},
+      {text:"已拒绝", value:"Rejected"},
+      {text:"已退回", value:"Aborted"}
+
+    ],
     page:{
       iCount:0,
       PageIndex:pageIndexs,

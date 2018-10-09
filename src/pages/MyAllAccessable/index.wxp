@@ -11,9 +11,11 @@
   <view class="dialog-mask" style="visibility:{{isVisible ? 'visible': 'hidden'}}" bindtap="hideMenuTap">
   </view>
 
+<!--
   <view style="position:fixed;top:40%;box-sizing:border-box;padding:0rpx;text-align:center;width:100%">
     <view style="padding-bottom:20rpx;height:100rpx ">{{status}}{{begin==null?"":begin}}-{{end==null?"":end}}</view>
   </view>
+-->
 
   <view class="list-wrap" >
 
@@ -38,8 +40,8 @@
   <!--api动画方式-->
   <view  wx:if="{{menuType=='1'}}" class="state-menu " animation="{{animationData}}" style="visibility:{{isVisible ? 'visible': 'hidden'}}">
 
-    <view wx:for="{{HistoryTaskType}}" class="state-item {{status==item.value ? 'border' : ''}}" bindtap="selectState" data-status="{{item.value}}">
-      {{item.name}}
+    <view wx:for="{{TaskState}}"  wx:key="{{item.value}}" class="state-item {{status==item.value ? 'border' : ''}}" bindtap="selectState" data-status="{{item.value}}">
+      {{item.text}}
     </view>
 
   </view>
@@ -53,12 +55,22 @@
     </view>
     <view class="date">
       <view class="classname">结束日期: </view>
-      <picker mode="date" value="{{date}}" data-type="2"  bindchange="bindDateChange">
+      <picker mode="date" value="{{date}}" fields="year" data-type="2"  bindchange="bindDateChange">
         <view class="classname">{{end==null?'不限' : end}}</view>
       </picker>
     </view>
+    <view class="keyWord">
+      <wxc-input
+                 type="text"
+                 name="KeyWords"
+                 icon="search"
+                 bind:blur="bindKeyWordChange"
+
+                 placeholder="流程名称、流程编号"></wxc-input>
+    </view>
     <button class="date-btn " bindtap="sureDateTap">确定</button>
   </view>
+
 
 
 </template>
@@ -83,6 +95,7 @@ export default {
     usingComponents: {
       'wxc-list': '@minui/wxc-list',
       'wxc-icon': '@minui/wxc-icon',
+      'wxc-input': '@minui/wxc-input',
       'wxc-popup': '@minui/wxc-popup',
       'wxc-loadmore': '@minui/wxc-loadmore'
     }
@@ -91,7 +104,7 @@ export default {
   data: {
     menuType: 0,
     begin: null,
-    status: 1,
+    status: "All",
     end: null,
     isVisible: false,
     animationData: {},
@@ -99,12 +112,24 @@ export default {
       pageIndex:pageIndexs,
       PageSize:PageSizes
     },
-    HistoryTaskType:[
-      {name: '我的申请', value: '0', checked: 'true'},
-      {name: '我的审批', value: '1'},
-      {name: '我的任务', value: '2'},
-      {name: '我的代理', value: '3'}
+
+    HistoryTaskType:
+      [
+        {text: '我的申请', value: '0', checked: 'true'},
+        {text: '我的审批', value: '1'},
+        {text: '我的任务', value: '2'},
+        {text: '我的代理', value: '3'}
       ],
+
+      TaskState:[
+        {text:"全部", value:"All"},
+        {text:"已完成", value:"Approved"},
+        {text:"进行中", value:"Running"},
+        {text:"已拒绝", value:"Rejected"},
+        {text:"已退回", value:"Aborted"}
+      ],
+
+
     LstItem:{},
     PostURL:app.globalData.BPMHost +"/Login.ashx",
     GetURL:app.globalData.BPMHost +"/MyAllAccessable.ashx",
@@ -180,8 +205,6 @@ export default {
 
   onReachBottom(){
 
-
-
     let that = this;
     let pageIndex =pageIndexs;//that.data.page.pageIndex+1;
     let PageSize =PageSizes;// that.data.page.PageSize;
@@ -190,7 +213,7 @@ export default {
 
     let PageStartX="page.PageStart";
     let PageEndX="page.PageEnd";
-
+    let TaskStatus =that.data.status="All"? " " : that.data.status;
 
     that.setData({
 
@@ -207,7 +230,7 @@ export default {
       [PageEndX] :PageEnd,
 
       Postdata:{
-
+        State:TaskStatus,
         uid:"SDT12872",
         pwd:"Joson080256",
         UserAccount:"SDT12872",
@@ -217,10 +240,10 @@ export default {
 
     });
 
-    console.log(PageSize);
-    console.log(pageIndex);
-    console.log(PageSizes);
-    console.log(pageIndexs);
+//    console.log(PageSize);
+//    console.log(pageIndex);
+//    console.log(PageSizes);
+//    console.log(pageIndexs);
 
 
     this.AjaxPost(that.data);
@@ -233,8 +256,6 @@ export default {
   },
 
   onShow (options) {
-
-
 
   },
 
@@ -321,39 +342,69 @@ export default {
   selectState: function (e) {
 
     this.startAnimation(false, -200);
-    var status = e.currentTarget.dataset.status;
+    let status = e.currentTarget.dataset.status;
     this.setData({
-      status: status
+
+      status : status,
+      ["Postdata.State"]:status
+
     });
+
+    let options=this.data;
+    this.AjaxPost (options);
 
     console.log(this.data)
 
   },
   // 时间选择
   bindDateChange: function (e) {
-    console.log(e);
+
+    //console.log(e);
+
     if (e.currentTarget.dataset.type == 1) {
 
-      this.setData({
-        begin: e.detail.value
-      })
+//      this.setData({
+//        begin: e.detail.value,
+//        Year : e.detail.value,
+//        ["Postdata.Year"]:e.detail.value
+//      })
 
     } else if (e.currentTarget.dataset.type == 2) {
 
+      let Years= e.detail.value;
       this.setData({
-        end: e.detail.value
-      })
+        end: e.detail.value,
+        Year : e.detail.value,
+        ["Postdata.Year"]:e.detail.value
 
+      })
     }
   },
+
+  bindKeyWordChange: function (e) {
+
+    console.log(e);
+
+    let KeyWords = e.detail.value;
+
+    this.setData({
+        ["Postdata.KeyWord"]:KeyWords
+    });
+
+  },
+
   sureDateTap: function () {
 
     this.data.pageNo = 1;
-    this.startAnimation(false, -200)
+    this.startAnimation(false, -200);
+
+    let options=this.data;
+    this.AjaxPost (options);
 
   },
   // 执行动画
   startAddressAnimation: function (isShow) {
+
     console.log(isShow);
 
     let that = this;
@@ -512,7 +563,7 @@ export default {
     position: fixed;
     left: 0;
     padding: 10rpx 0;
-    height: 200rpx;
+    height: 280rpx;
     top: 80rpx;
     width: 100%;
     z-index: 9;
@@ -599,4 +650,13 @@ export default {
     text-align: center;
   }
 
+  .keyWord {
+    min-width: 100%;
+    display: flex;
+    font-size: 11pt;
+    color: #bdbdbd;
+    line-height: 56rpx;
+    align-items: center;
+
+  }
 </style>

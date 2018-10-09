@@ -1,5 +1,5 @@
-
 <template>
+
   <view class="list-wrap">
 
 <!--
@@ -33,12 +33,13 @@
     <view class="list-item" wx:for="{{LstItem}}" wx:key="{{LstItem.sn}}">
 
       <view class="list-check" bindtap="onClick" data-name='{{item}}'>
-        <wxc-list class="item"  title="{{item.pn}}({{ item.sn }})" detail="{{item.desc}}"></wxc-list>
+        <wxc-list class="item" title="{{item.pn}}({{ item.sn }})" detail="{{item.desc}}"></wxc-list>
       </view>
 
     </view>
 
   </view>
+
 </template>
 
 <script>
@@ -64,54 +65,81 @@
       LstItem:[],
       PostURL:app.globalData.BPMHost +"/Login.ashx",
       GetURL:app.globalData.BPMHost +"/MyTasks.ashx",
-      Postdata : {uid:"SDT12872",pwd:"Joson080256",UserAccount:"SDT12872",isDebug:true,isWeixIn:true},
+      Postdata : {
+//        UserAccount:app.globalData.EmpID,
+//        isDebug:true,
+//        isWeixIn:true
+      },
 
     },
 
-    onShow (options) {
+    //页面的初始数据、生命周期回调、事件处理函数等
+    //https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 
+    onShow () {
+
+      let that = this;
+//      let UserAccount=app.globalData.EmpID;
+//      //console.log(app.globalData);
+//
+//      that.setData({
+//        ["Postdata.UserAccount"]:UserAccount
+//      });
+//
+//      //console.log(that.data);
+//      let Josonoptions = that.data;
+//      that.AjaxPost(Josonoptions);
 
     },
+    onReady(){
 
+//      let that = this;
+//      let UserAccount=app.globalData.EmpID;
+//      //console.log(app.globalData);
+//
+//      that.setData({
+//        ["Postdata.UserAccount"]:UserAccount
+//      });
+//
+//      //console.log(that.data);
+//      let Josonoptions = that.data;
+//      that.AjaxPost(Josonoptions);
+
+    },
     onLoad(option){
 
-      var that = this;
-      var Josonoptions = that.data;
+      let that = this;
+      let UserAccount=app.globalData.EmpID;
+      console.log(app.globalData);
+
+      that.setData({
+        ["Postdata.UserAccount"]:UserAccount
+      });
+
+      let Josonoptions = that.data;
       that.AjaxPost(Josonoptions);
 
     },
     AjaxPost : function(options){
 
-      let that=this;
+      //console.log(options);
 
       $.ajax({
-        method: 'POST',
-        url: options.PostURL,
+        method: 'GET',
+        url: options.GetURL,
         data: options.Postdata,
+        PostJson:true
 
-      }).then(response => {
+      }).then(X => {
 
-        console.log(response);
+        //console.log(X);
 
-        $.ajax({
-          method: 'GET',
-          url: options.GetURL,
-          data: options.Postdata,
-
-        }).then(Performance => {
-
-          console.log(Performance);
-
-          that.setData({
-            LstItem : Performance.children
-          });
-
+        let that = this;
+        that.setData({
+          LstItem : X.children
         });
 
-        console.log(that.data);
-        //app.globalData.userInfo = options.userInfo;
-
-      })
+      });
 
     },
 
@@ -119,7 +147,7 @@
 
       console.log(e);
 
-      var currentTarget = e.currentTarget.dataset.name;
+      let currentTarget = e.currentTarget.dataset.name;
 
       let TaskID=currentTarget.tid;
       let StepID=currentTarget.pid;
@@ -139,12 +167,7 @@
 
     /** note: 在 wxp 文件或者页面文件中请去掉 methods 包装 */
     methods: {
-      onClick() {
-        let check = this.data.check;
-        this.setData({
-          check: !check
-        })
-      }
+
     }
   }
 </script>

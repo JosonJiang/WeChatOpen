@@ -103,7 +103,7 @@
     position: fixed;
     left: 0;
     padding: 10rpx 0;
-    height: 200rpx;
+    height: 280rpx;
     top: 80rpx;
     width: 100%;
     z-index: 9;
@@ -188,4 +188,14 @@
     margin-left: 5rpx;
     margin-right: 5rpx;
     text-align: center;
+  }
+
+  .keyWord {
+    min-width: 100%;
+    display: flex;
+    font-size: 11pt;
+    color: #bdbdbd;
+    line-height: 56rpx;
+    align-items: center;
+
   }

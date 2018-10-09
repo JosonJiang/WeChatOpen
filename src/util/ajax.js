@@ -125,11 +125,14 @@ function ajax(model) {
 
         for (let k in model.data) {
 
-            Join = Index == 0 ? "?" : "&"
+            Join = Index == 0 ? "?" : "&";
 
-            //console.log(Join);
+            // console.log(model.data);
+            // console.log(k);
+            // console.log(model.data[k]);
+            // console.log(Join);
 
-            if (model.data[k].toString() !== '')
+            if (model.data[k]!=='null' && model.data[k]!=='' && model.data[k].toString() !== '')
             {
                 model.url = model.url + Join + k + "=" + model.data[k];
             }
@@ -139,7 +142,7 @@ function ajax(model) {
         }
 
         model.data = '';
-
+        //console.log(model);
     }
 
 

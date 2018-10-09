@@ -121,15 +121,17 @@
     },
 
     data: {
+
       YearLeave:{},
       userInfo: {},
       focus: false,
       inputValue: '',
+      mSkyworthURL:app.globalData.mSkyworthHost +"api/Union",
       PostURL:app.globalData.OauthHost +"/WebService.asmx/YearLeaveSelect",
       GetURL:app.globalData.OauthHost +"/WebService.asmx/YearLeaveSelect",
       PerformanceURL:app.globalData.OauthHost +"/WebService.asmx/PerformanceSelectByEmpID",
       AttendanceURL:app.globalData.OauthHost +"/WebService.asmx/AttendanceResult",
-      Postdata : {EmpID:"SDT12872",sEmpID:"SDT12872",m:"0",FromDate:" ",ToDate:" " },
+      Postdata : {UnionID:"",OpenID:""},
 
     },
 
@@ -158,7 +160,6 @@
       });
 
 
-
       $.ajax({
         method: 'GET',
         url: options.GetURL,
@@ -173,7 +174,6 @@
           //userInfo:{EmpID:response[0].EmpID},
           Postdata :{sEmpID:response[0].EmpID}
         });
-
 
           $.ajax({
             method: 'GET',
@@ -195,30 +195,60 @@
           });
 
          console.log(that.data);
-         //app.globalData.userInfo = options.userInfo;
 
       })
 
     },
-    onShow (options) {
 
+    onShow () {
 
-      this.setData({
-        ["Postdata.EmpID"]:"SDT12872",
-        ["Postdata.sEmpID"]:"SDT12872",
-        ["Postdata.m"]:"0",
-        ["Postdata.FromDate"]:" ",
-        ["Postdata.ToDate"]:" "
-      });
 
     },
 
     onLoad(option){
 
-      var that = this;
-      var Josonoptions = that.data;
+      let that = this;
 
-      that.AjaxPost(Josonoptions);
+      //console.log(option);
+
+      let UnionID= option.UnionID === "null" ? "" : option.UnionID;
+      let OpenID= option.OpenID === "null" ? "" :  option.OpenID;
+
+      that.setData({
+        ["Postdata.UnionID"]: UnionID || "ovDumuEppRjgVoZIA36ZwFQ_8GBc",
+        ["Postdata.OpenID"]:  OpenID  || "oTkndw9-3WNKWSn8lSgTHiSQi_VA"
+      });
+
+      //console.log(that.data);
+
+      $.ajax({
+        method: 'GET',
+        url: that.data.mSkyworthURL,
+        data:that.data.Postdata,
+
+      }).then(ResponseX => {
+
+        console.log(ResponseX);
+
+        let EmpID=ResponseX.EmpID;
+
+        that.setData({
+          ["Postdata.EmpID"]: EmpID,
+          ["Postdata.sEmpID"]:EmpID,
+          ["Postdata.m"]:"0",
+          ["Postdata.FromDate"]:" ",
+          ["Postdata.ToDate"]:" "
+        });
+
+        app.globalData.EmpID =  EmpID;
+        app.globalData.sEmpID =  EmpID;
+
+        //console.info(that.data);
+
+        that.AjaxPost(that.data);
+
+    });
+
     },
 
     onClick(event) {
